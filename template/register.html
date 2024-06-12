@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music.In-Registrazione</title>
+    <link rel="stylesheet" href="css/style-register.css">
+</head>
+<body>
+    <h2>Registrazione</h2>
+    <form id="registrationForm">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="email">Indirizzo Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="confirmPassword">Conferma Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <div id="passwordError" style="color:red;"></div>
+        </div>
+        <button type="button" onclick="register()">Registrati</button>
+        <button type="button" onclick="resetForm()">Annulla</button>
+    </form>
+
+    <script>
+        function register() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordError = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                passwordError.textContent = "Le password non coincidono.";
+            } else {
+                passwordError.textContent = "";
+                alert("Registrazione completata con successo!");
+                window.location.href = "login.html";
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('registrationForm').reset();
+            document.getElementById('passwordError').textContent = "";
+        }
+    </script>
+</body>
+</html>

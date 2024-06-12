@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music.In-Login</title>
+    <link rel="stylesheet" href="/css/style-login.css">
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <button type="button" onclick="login()">Accedi</button>
+        <button type="button" onclick="resetForm()">Annulla</button>
+    </form>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Controllo credenziali
+            if (username === "utente" && password === "password") {
+                alert("Accesso effettuato con successo!");
+                // Reindirizza l'utente alla pagina home
+                window.location.href = "index.html";
+            } else {
+                alert("Credenziali non valide. Riprova.");
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('loginForm').reset();
+        }
+    </script>
+</body>
+</html>
