@@ -6,7 +6,8 @@
 - se loggato -> feed
 - se non loggato -> login */
 
-// require 'template/base.php';
-require_once 'template/index.html';
+$templateParams["titolo"] = "Music.In - Home";
+$templateParams["nome"] = "feed.php";
+require 'template/base.php';
 
 ?>

@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Music.In - Home</title>
+    <title><?php echo $templateParams["titolo"]; ?></title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -25,32 +25,17 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             <ul>
-                <li><a href="index.html"><i class="bi bi-house"></i>Home</a></li>
-                <li><a href="profile.html"><i class="bi bi-person"></i>Profilo</a></li> <!-- in php linka a username proprio -->
+                <li><a href="index.php"><i class="bi bi-house"></i>Home</a></li>
+                <li><a href="profile.php"><i class="bi bi-person"></i>Profilo</a></li> <!-- in php linka a username proprio -->
             </ul>
         </nav>
 
         <main>
-            <article>
-                <header>
-                    <img src="" alt="" /> <!-- avatar -->
-                    <h2>Titolo post</h2>
-                    <p>Utente1</p>
-                    <p>dd mm yyyy</p>
-                </header>
-                <section>
-                    <img src="" alt="" /> <!-- immagine post -->
-                    <p>Descrizione(Contenuto)</p>
-                </section>
-                <footer>
-                    <!-- like -->
-                    <!-- commenti -->
-                    <ul>
-                        <li><a href="#"><i class="bi bi-hand-thumbs-up"></i>Mi piace: </a>n</li>
-                        <li><a href="#"><i class="bi bi-chat"></i>Commenti</a></li>
-                    </ul>
-                </footer>
-            </article>
+        <?php
+        if(isset($templateParams["nome"])){
+            require($templateParams["nome"]);
+        }
+        ?>
         </main>
 
         <footer>
