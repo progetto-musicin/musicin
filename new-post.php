@@ -2,8 +2,8 @@
 
 // require_once 'bootstrap.php';
 
-$templateParams["titolo"] = "Music.In - Nuovo Post";
-$templateParams["nome"] = "new-post";
+$templateParams["title"] = "Music.In - Nuovo Post";
+$templateParams["name"] = "new-post";
 require 'template/base.php';
 
 ?>
