@@ -31,11 +31,7 @@
         </nav>
 
         <main>
-        <?php
-        if(isset($templateParams["nome"])){
-            require($templateParams["nome"]);
-        }
-        ?>
+            <?php if(isset($templateParams["nome"])) { require($templateParams["nome"] . ".php"); } ?>
         </main>
 
         <footer>
