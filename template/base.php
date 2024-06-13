@@ -27,6 +27,7 @@
             <ul>
                 <li><a href="index.php"><i class="bi bi-house"></i>Home</a></li>
                 <li><a href="profile.php"><i class="bi bi-person"></i>Profilo</a></li> <!-- in php linka a username proprio -->
+                <li><a href="new-post.php"><i class="bi bi-plus-circle"></i>Nuovo Post</a></li>
             </ul>
         </nav>
 
