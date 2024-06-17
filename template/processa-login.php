@@ -1,14 +1,6 @@
 <?php
-session_start();
 
-// Verifica se l'utente è già loggato, reindirizza alla pagina base.php
-if (isset($_SESSION['user_id'])) {
-    header("Location: base.php");
-    exit();
-}
-
-// Include il file di connessione al database
-require_once "connessione-db.php";
+require_once "bootstrap.php";
 
 // Definizione delle variabili e inizializzazione con valori vuoti
 $username = $password = "";

@@ -1,11 +1,11 @@
 <?php
 
 function getCurrentUserId() {
-    return $_SESSION["iduser"];
+    return $_SESSION["user_id"];
 }
 
 function isUserLoggedIn() {
-    // return isset($_SESSION["iduser"]);
+    // return isset($_SESSION["user_id"]);
     return !empty(getCurrentUserId());
 }
 
