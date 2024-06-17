@@ -1,4 +1,4 @@
-<form action="new-post.php" method="post" enctype="multipart/form-data">
+<form action="processa-new-post.php" method="post" enctype="multipart/form-data">
     <h2>Nuovo Post</h2>
     <ul>
         <li>
