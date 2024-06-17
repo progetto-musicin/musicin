@@ -63,4 +63,19 @@ function uploadImage($path, $image) {
     return array($result, $msg);
 }
 
+// Restituisce il numero di follower dell'utente con l'id passato come parametro
+function getNumFollowers($user_id) {
+    return -1;
+}
+
+// Restituisce il numero di utenti seguiti dall'utente con l'id passato come parametro
+function getNumFollowing($user_id) {
+    return -1;
+}
+
+// Restituisce il numero di like del post con l'id passato come parametro
+function getPostLikes($post_id) {
+    return -1;
+}
+
 ?>

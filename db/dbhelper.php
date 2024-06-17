@@ -21,7 +21,7 @@ class DatabaseHelper {
 
     // Query per recuperare le informazioni dell'utente
     public function getUserInfo($user_id) {
-        $query_user = "SELECT username, num_followers, num_following, profile_image FROM users WHERE user_id = :user_id";
+        $query_user = "SELECT username, profile_image FROM users WHERE id = :user_id";
         $stmt_user = $this->conn->prepare($query_user);
         $stmt_user->bindParam(':user_id', $user_id);
         $stmt_user->execute();
@@ -31,7 +31,7 @@ class DatabaseHelper {
 
     // Query per recuperare i post dell'utente ordinati per data decrescente
     public function getUserPosts($user_id) {
-        $query = "SELECT post_id, content, created_at FROM posts WHERE user_id = :user_id ORDER BY created_at DESC";
+        $query = "SELECT id as post_id, user_id, content, created_at FROM posts WHERE user_id = :user_id ORDER BY created_at DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();

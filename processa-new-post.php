@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($dbh->createPost($user_id, $content)) {
         // Reindirizza al profilo dopo aver pubblicato il post
-        header("Location: my-profile.php");
+        header("Location: profile.php");
         exit();
     } else {
         echo "Errore nella pubblicazione del post.";
