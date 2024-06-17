@@ -11,7 +11,7 @@
         </li>
         <li>
             <label for="attachment">Carica un'immagine:</label>
-            <input type="file" accept="image/*" id="attachment" name="attachment">
+            <input type="file" accept="image/jpg, image/jpeg, image/png, image/gif" id="attachment" name="attachment">
         </li>
     </ul>
     <input type="submit" value="Invia" />

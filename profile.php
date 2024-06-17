@@ -1,6 +1,6 @@
 <?php
 
-// require_once 'bootstrap.php';
+require_once 'bootstrap.php';
 
 $templateParams["title"] = "Music.In - Profilo";
 $templateParams["name"] = "profile";

@@ -1,10 +1,6 @@
 <?php
 
-// require_once 'bootstrap.php';
-
-/* controlla i cookie:
-- se loggato -> feed
-- se non loggato -> login */
+require_once 'bootstrap.php';
 
 $templateParams["title"] = "Music.In - Home";
 $templateParams["name"] = "feed";
