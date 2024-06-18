@@ -14,4 +14,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Errore nella pubblicazione del post.";
     }
 }
-?>
