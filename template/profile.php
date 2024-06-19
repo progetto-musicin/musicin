@@ -1,3 +1,6 @@
+<?php if (empty($user)): ?>
+    <h2>Utente non trovato.</h2>
+<?php else: ?>
 <section>
     <article>
         <header>
@@ -38,3 +41,4 @@
         </article>
     <?php endforeach; ?>
 </section>
+<?php endif; ?>
