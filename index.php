@@ -1,9 +1,9 @@
 <?php
 
-require_once 'bootstrap.php';
+require_once __DIR__ . '/bootstrap.php';
 
 $templateParams["title"] = "Music.In - Home";
 $templateParams["name"] = "feed";
-require 'template/base.php';
+require __DIR__ . '/template/base.php';
 
 ?>

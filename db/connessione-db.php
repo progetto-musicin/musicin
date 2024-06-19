@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbhelper.php");
+require_once(__DIR__ . "/dbhelper.php");
 
 // Configurazione per la connessione al database MySQL
 $servername = "localhost"; // Indirizzo del server MySQL

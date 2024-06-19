@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once("utils/constants.php");
-require_once("utils/functions.php");
+require_once(__DIR__ . "/utils/constants.php");
+require_once(__DIR__ . "/utils/functions.php");
 
 if (isset($_GET['testing'])) {
     $_SESSION['user_id'] = 1;   // temporaneamente per testing
@@ -13,6 +13,6 @@ if (!isUserLoggedIn() && (basename($_SERVER['PHP_SELF']) != 'login.php' || basen
     exit();
 }
 
-require_once("db/connessione-db.php");
+require_once(__DIR__ . "/db/connessione-db.php");
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once '../db/connessione-db.php';
+require_once __DIR__ . '/../db/connessione-db.php';
 
 // Verifica se il form è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'bootstrap.php';
+require_once __DIR__ . '/bootstrap.php';
 
 $templateParams["title"] = "Music.In - Profilo";
 $templateParams["name"] = "profile";
@@ -18,6 +18,6 @@ if(empty($_GET['id'])) {
 $user = $dbh->getUserInfo($user_id);
 $posts = $dbh->getUserPosts($user_id);
 
-require 'template/base.php';
+require __DIR__ . '/template/base.php';
 
 ?>

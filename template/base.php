@@ -34,7 +34,7 @@
         </nav>
 
         <main>
-            <?php if(isset($templateParams["name"])) { require("template/" . $templateParams["name"] . ".php"); } ?>
+            <?php if(isset($templateParams["name"])) { require(__DIR__ . "/" . $templateParams["name"] . ".php"); } ?>
         </main>
 
         <footer>
