@@ -1,5 +1,5 @@
 <?php
-require_once 'connessione-db.php';
+require_once '../db/connessione-db.php';
 
 // Verifica se il form è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,18 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_check->bindParam(':email', $email);
     $stmt_check->execute();
 
-    // Debug della query (opzionale)
-    if ($stmt_check->errorInfo()[0] !== '00000') {
-        print_r($stmt_check->errorInfo()); // Mostra l'errore della query se presente
-    }
-
     $count = $stmt_check->fetchColumn();
 
     if ($count > 0) {
         echo "Username o email già in uso.";
     } else {
         // Inserimento dell'utente nel database
-        $query_insert = "INSERT INTO users (username, password, email, created_at) VALUES (:username, :password, :email, NOW())";
+        $query_insert = "INSERT INTO users (username, password, email) 
+                         VALUES (:username, :password, :email)";
         $stmt_insert = $dbh->prepare($query_insert);
         $stmt_insert->bindParam(':username', $username);
         $stmt_insert->bindParam(':password', $password);
@@ -33,12 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt_insert->execute()) {
             // Reindirizzamento alla pagina di login dopo la registrazione
-            header("Location: login.html");
+            header("Location: ../login.html");
             exit;
         } else {
             echo "Errore durante la registrazione: " . $stmt_insert->errorInfo()[2];
         }
     }
 }
-
-
+?>
