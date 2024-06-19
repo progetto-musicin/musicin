@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $user['username'];
 
         // Reindirizzamento alla dashboard o a una pagina protetta
-        header("Location: base.php");
+        header("Location: /index.php");
         exit;
     } else {
         echo "Credenziali non valide. Riprova.";
