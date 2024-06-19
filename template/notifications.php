@@ -1,5 +1,4 @@
 <h2>Centro Notifiche</h2>
-
 <section>
     <?php if (empty($notifications)) : ?>
         <p>Non hai ancora nessuna notifica.</p>
@@ -7,20 +6,25 @@
         <ul>
             <?php foreach ($notifications as $notification) : ?>
                 <li>
-                    <?php switch ($notification['type']):
-                    case NotificationType::LIKE: ?>
-                        <a href="profile.php?id=<?php echo $notification['creator_id']; ?>"><?php echo $notification['username']; ?></a> ha messo mi piace al tuo <a href="post.php?id=<?php echo $notification['post_id']; ?>">post</a>.
-                    <?php break; ?>
-                    <?php case NotificationType::COMMENT: ?>
-                        <a href="profile.php?id=<?php echo $notification['creator_id']; ?>"><?php echo $notification['username']; ?></a> ha <a href="post.php?id=<?php echo $notification["post_id"]; ?>#<?php echo $notification["comment_id"]; ?>">commentato</a> il tuo <a href="post.php?post_id=<?php echo $notification['post_id']; ?>">post</a>.
-                    <?php break; ?>
-                    <?php case NotificationType::FOLLOW: ?>
-                        <a href="profile.php?id=<?php echo $notification['creator_id']; ?>"><?php echo $notification['username']; ?></a> ha iniziato a seguirti.
-                    <?php break; ?>
-                    <?php case NotificationType::POST: ?>
-                        <a href="profile.php?id=<?php echo $notification['creator_id']; ?>"><?php echo $notification['username']; ?></a> ha pubblicato un nuovo <a href="post.php?id=<?php echo $notification['post_id']; ?>">post</a>.
-                    <?php break; ?>
-                    <?php endswitch; ?>
+                    <!-- <p><?php echo htmlspecialchars(($notification['created_at'])); ?></p> -->
+                    <!-- <p><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d/m/Y H:i:s')); ?></p> -->
+                    <p><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d F Y H:i:s')); ?></p>
+                    <p>
+                        <?php switch ($notification['type']):
+                        case NotificationType::LIKE->value: ?>
+                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha messo mi piace al tuo <a href="post.php?id=<?php echo htmlspecialchars($notification['post_id']); ?>"> post</a>.
+                        <?php break; ?>
+                        <?php case NotificationType::COMMENT->value: ?>
+                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha <a href="post.php?id=<?php echo htmlspecialchars($notification["post_id"]); ?>#<?php echo htmlspecialchars($notification["comment_id"]); ?>">commentato</a> il tuo <a href="post.php?post_id=<?php echo $notification['post_id']; ?>">post</a>.
+                        <?php break; ?>
+                        <?php case NotificationType::FOLLOW->value: ?>
+                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha iniziato a seguirti.
+                        <?php break; ?>
+                        <?php case NotificationType::POST->value: ?>
+                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha pubblicato un nuovo <a href="post.php?id=<?php echo htmlspecialchars($notification['post_id']); ?>">post</a>.
+                        <?php break; ?>
+                        <?php endswitch; ?>
+                    </p>
                 </li>
             <?php endforeach; ?>
         </ul>

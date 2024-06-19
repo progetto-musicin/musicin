@@ -45,7 +45,7 @@ INSERT INTO `comments` (`id`, `content`, `created_at`, `user_id`, `post_id`) VAL
 (4, 'Comment4', '2024-06-16 13:57:08', 4, 1);
 
 INSERT INTO `notifications` (`id`, `type`, `created_at`, `was_read`, `receiver_id`, `creator_id`, `post_id`, `comment_id`) VALUES
-(1, 1, '2024-06-16 13:13:08', 0, 1, 2, 1, NULL),
-(2, 1, '2024-06-16 13:13:23', 0, 1, 3, 1, NULL),
-(3, 1, '2024-06-16 13:51:43', 0, 1, 4, 1, NULL),
-(4, 1, '2024-06-16 13:57:08', 0, 1, 5, 1, NULL);
+(1, 0, '2024-06-16 13:13:08', 0, 1, 2, 1, NULL),
+(2, 0, '2024-06-16 13:13:23', 0, 1, 3, 1, NULL),
+(3, 0, '2024-06-16 13:51:43', 0, 1, 4, 1, NULL),
+(4, 0, '2024-06-16 13:57:08', 0, 1, 5, 1, NULL);

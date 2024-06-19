@@ -41,7 +41,15 @@ class DatabaseHelper {
 
     public function getFollowers($user_id) {}
     public function getFollowing($user_id) {}
-    public function getNotifications($user_id) {}
+
+    public function getNotifications($user_id) {
+        $query = "SELECT id as notification_id, type, created_at, was_read, creator_id, post_id, comment_id FROM notifications WHERE receiver_id = :user_id ORDER BY created_at DESC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+        $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $notifications;
+    }
 
     public function createPost($user_id, $content) {
         // Query per inserire il nuovo post nel database
