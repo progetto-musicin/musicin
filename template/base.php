@@ -12,7 +12,7 @@
         <header>
             <div class="row">
                 <h1>Music.In</h1>
-                <a href="#"><i class="bi bi-bell"></i></a>
+                <a href="notifications.php"><i class="bi bi-bell"></i></a>
             </div>
         </header>
 
