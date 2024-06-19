@@ -9,6 +9,6 @@ $password = ""; // Password MySQL (lascia vuoto se non hai impostato una passwor
 $dbname = "music_in"; // Nome del database MySQL
 $port = 3306; // Porta di connessione
 
-$dbh = new DatabaseHelper($servername, $username, $password, $dbname, 3306);
+$dbh = new DatabaseHelper($servername, $username, $password, $dbname, $port);
 
 ?>
