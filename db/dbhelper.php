@@ -21,7 +21,7 @@ class DatabaseHelper {
 
     // Query per recuperare le informazioni dell'utente
     public function getUserInfo($user_id) {
-        $query_user = "SELECT username, profile_image FROM users WHERE id = :user_id";
+        $query_user = "SELECT username, email, name, surname, image as profile_image FROM users WHERE id = :user_id";
         $stmt_user = $this->conn->prepare($query_user);
         $stmt_user->bindParam(':user_id', $user_id);
         $stmt_user->execute();
