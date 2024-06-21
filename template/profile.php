@@ -23,18 +23,28 @@
     <?php foreach ($posts as $post): ?>
         <article class="post">
             <header>
-                <img src="" alt="" /> <!-- avatar -->
-                <h2>Title PlaceHolder</h2>
-                <!-- <p>User PlaceHolder</p>  --> <!-- siamo dentro al profilo, serve specificare lo username comunque? -->
+                <h2><?php echo htmlspecialchars($post['title']); ?></h2>
                 <p><?php echo htmlspecialchars($post['created_at']); ?></p>
             </header>
             <section>
-                <img src="" alt="" /> <!-- immagine post -->
                 <p><?php echo htmlspecialchars($post['content']); ?></p>
+                
+                <!-- Player audio -->
+                <?php if (!empty($post['song'])): ?>
+                    <audio controls>
+                        <source src="<?php echo htmlspecialchars($post['song']); ?>" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                <?php endif; ?>
+
+                <!-- Immagine post -->
+                <?php if (!empty($post['image'])): ?>
+                    <img src="<?php echo htmlspecialchars($post['image']); ?>" alt="Immagine del post">
+                <?php endif; ?>
             </section>
             <footer>
                 <ul>
-                    <li><a href="#"><i class="bi bi-hand-thumbs-up"></i>Mi piace: </a><?php echo htmlspecialchars(getPostLikes($post['post_id'])); ?></li>
+                    <li><a href="#"><i class="bi bi-hand-thumbs-up"></i>Mi piace: <?php echo htmlspecialchars(getPostLikes($post['post_id'])); ?></a></li>
                     <li><a href="#"><i class="bi bi-chat"></i>Commenti</a></li>
                 </ul>
             </footer>
