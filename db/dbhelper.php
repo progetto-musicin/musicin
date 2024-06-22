@@ -56,7 +56,7 @@ class DatabaseHelper {
     }
 
     public function getFollowers($user_id) {
-        $query = "SELECT follower_id FROM followers WHERE followed_id = :followed_id";
+        $query = "SELECT follower_id FROM follows WHERE followed_id = :followed_id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":followed_id", $user_id);
         $stmt->execute();
@@ -64,7 +64,7 @@ class DatabaseHelper {
         return $followers_ids;
     }
     public function getFollowing($user_id) {
-        $query = "SELECT followed_id FROM followers WHERE follower_id = :follower_id";
+        $query = "SELECT followed_id FROM follows WHERE follower_id = :follower_id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":follower_id", $user_id);
         $stmt->execute();
@@ -83,17 +83,32 @@ class DatabaseHelper {
 
     // Restituisce il numero di follower dell'utente con l'id passato come parametro
     public function getNumFollowers($user_id) {
-        return -1;
+        $query = "SELECT COUNT(*) as num_followers FROM follows WHERE followed_id = :followed_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":followed_id", $user_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result["num_followers"];
     }
 
     // Restituisce il numero di utenti seguiti dall'utente con l'id passato come parametro
     public function getNumFollowing($user_id) {
-        return -1;
+        $query = "SELECT COUNT(*) as num_following FROM follows WHERE follower_id = :follower_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":follower_id", $user_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result["num_following"];
     }
 
     // Restituisce il numero di like del post con l'id passato come parametro
     public function getNumPostLikes($post_id) {
-        return -1;
+        $query = "SELECT COUNT(*) as num_likes FROM likes WHERE post_id = :post_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":post_id", $post_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result["num_likes"];
     }
 
     public function createPost($user_id, $content) {
