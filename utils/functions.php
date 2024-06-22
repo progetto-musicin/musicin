@@ -74,7 +74,7 @@ function getNumFollowing($user_id) {
 }
 
 // Restituisce il numero di like del post con l'id passato come parametro
-function getPostLikes($post_id) {
+function getNumPostLikes($post_id) {
     return -1;
 }
 

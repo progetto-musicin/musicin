@@ -44,7 +44,7 @@
             </section>
             <footer>
                 <ul>
-                    <li><a href="#"><i class="bi bi-hand-thumbs-up"></i>Mi piace: <?php echo htmlspecialchars(getPostLikes($post['post_id'])); ?></a></li>
+                    <li><a href="#"><i class="bi bi-hand-thumbs-up"></i>Mi piace: <?php echo htmlspecialchars(getNumPostLikes($post['post_id'])); ?></a></li>
                     <li><a href="#"><i class="bi bi-chat"></i>Commenti</a></li>
                 </ul>
             </footer>
