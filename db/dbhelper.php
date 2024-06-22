@@ -119,6 +119,23 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function getCommentsByPostId($post_id) {
+        $query = "SELECT id, content, created_at, user_id, post_id FROM comments WHERE post_id = :post_id ORDER BY created_at DESC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':post_id', $post_id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function addComment($content, $user_id, $post_id) {
+        $query = "INSERT INTO comments (content, created_at, user_id, post_id) VALUES (:content, NOW(), :user_id, :post_id)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':content', $content);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':post_id', $post_id);
+        return $stmt->execute();
+    }
+
     // Funzione privata base per creare una notifica
     private function createNotification($type, $receiver_id, $creator_id, $post_id, $comment_id) {
         $query = "INSERT INTO notifications (type, receiver_id, creator_id, post_id, comment_id) VALUES (:type, :receiver_id, :creator_id, :post_id, :comment_id)";

@@ -45,7 +45,8 @@
             <footer>
                 <ul>
                     <li><a href="#"><i class="bi bi-hand-thumbs-up"></i>Mi piace: <?php echo htmlspecialchars($dbh->getNumPostLikes($post['post_id'])); ?></a></li>
-                    <li><a href="#"><i class="bi bi-chat"></i>Commenti</a></li>
+                    <li><a href="php/comments.php?post_id=<?php echo htmlspecialchars($post['post_id']); ?>"><i class="bi bi-chat"></i>Commenti</a></li>
+                    </ul>
                 </ul>
             </footer>
         </article>
