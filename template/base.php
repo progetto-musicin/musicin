@@ -6,6 +6,13 @@
     <title><?php echo $templateParams["title"]; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel='stylesheet' type='text/css' href='css/common.css'>
+<?php if (!empty($templateParams["css"])): ?>
+    <link rel='stylesheet' type='text/css' href='css/<?php echo $templateParams["css"]; ?>.css'>
+<?php endif; ?>
+<?php if (!empty($templateParams["js"])): ?>
+    <script src='js/<?php echo $templateParams["js"]; ?>.js'></script>
+<?php endif; ?>
 </head>
 <body class="bg-light">
     <div class="container-fluid">
