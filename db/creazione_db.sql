@@ -35,7 +35,7 @@ create table notifications (
      `id` int not null AUTO_INCREMENT,
      `type` int not null,
      `created_at` timestamp not null DEFAULT current_timestamp(),
-     `was_read` boolean not null,
+     `was_read` boolean not null DEFAULT false,
      `receiver_id` int not null,
      `creator_id` int not null,
      `post_id` int,
@@ -157,8 +157,9 @@ INSERT INTO `comments` (`id`, `content`, `created_at`, `user_id`, `post_id`) VAL
 INSERT INTO `notifications` (`id`, `type`, `created_at`, `was_read`, `receiver_id`, `creator_id`, `post_id`, `comment_id`) VALUES
 (1, 0, '2024-06-16 13:13:08', 0, 1, 2, 1, NULL),
 (2, 0, '2024-06-16 13:13:23', 0, 1, 3, 1, NULL),
-(3, 0, '2024-06-16 13:51:43', 0, 1, 4, 1, NULL),
-(4, 0, '2024-06-16 13:57:08', 0, 1, 5, 1, NULL);
+(3, 0, '2024-06-16 13:51:43', 0, 1, 4, 1, NULL);
 
+INSERT INTO `notifications` (`id`, `type`, `created_at`, `receiver_id`, `creator_id`, `post_id`, `comment_id`) VALUES
+(4, 0, '2024-06-16 13:57:08', 1, 5, 1, NULL);
 
 COMMIT;
