@@ -12,8 +12,8 @@
 
             <!-- Numero di Follower e Seguiti -->
             <ul>
-                <li><a href="#">Followers: <?php echo htmlspecialchars(getNumFollowers($user_id)); ?></a></li>
-                <li><a href="#">Seguiti: <?php echo htmlspecialchars(getNumFollowing($user_id)); ?></a></li>
+                <li><a href="#">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
+                <li><a href="#">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
             </ul>
         </header>
     </article>
@@ -44,7 +44,7 @@
             </section>
             <footer>
                 <ul>
-                    <li><a href="#"><i class="bi bi-hand-thumbs-up"></i>Mi piace: <?php echo htmlspecialchars(getNumPostLikes($post['post_id'])); ?></a></li>
+                    <li><a href="#"><i class="bi bi-hand-thumbs-up"></i>Mi piace: <?php echo htmlspecialchars($dbh->getNumPostLikes($post['post_id'])); ?></a></li>
                     <li><a href="#"><i class="bi bi-chat"></i>Commenti</a></li>
                 </ul>
             </footer>

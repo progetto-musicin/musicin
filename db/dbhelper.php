@@ -81,6 +81,21 @@ class DatabaseHelper {
         return $notifications;
     }
 
+    // Restituisce il numero di follower dell'utente con l'id passato come parametro
+    public function getNumFollowers($user_id) {
+        return -1;
+    }
+
+    // Restituisce il numero di utenti seguiti dall'utente con l'id passato come parametro
+    public function getNumFollowing($user_id) {
+        return -1;
+    }
+
+    // Restituisce il numero di like del post con l'id passato come parametro
+    public function getNumPostLikes($post_id) {
+        return -1;
+    }
+
     public function createPost($user_id, $content) {
         $query = "INSERT INTO posts (user_id, content, created_at) VALUES (:user_id, :content, NOW())";
         $stmt = $this->conn->prepare($query);
