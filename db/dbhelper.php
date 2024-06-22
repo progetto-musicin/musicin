@@ -46,9 +46,31 @@ class DatabaseHelper {
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $posts;
     }
+    public function getPostById($post_id) {
+        $query = "SELECT id as post_id, user_id, title, content, image, song, created_at FROM posts WHERE id = :post_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':post_id', $post_id);
+        $stmt->execute();
+        $post = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $post;
+    }
 
-    public function getFollowers($user_id) {}
-    public function getFollowing($user_id) {}
+    public function getFollowers($user_id) {
+        $query = "SELECT follower_id FROM followers WHERE followed_id = :followed_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":followed_id", $user_id);
+        $stmt->execute();
+        $followers_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $followers_ids;
+    }
+    public function getFollowing($user_id) {
+        $query = "SELECT followed_id FROM followers WHERE follower_id = :follower_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":follower_id", $user_id);
+        $stmt->execute();
+        $followed_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $followed_ids;
+    }
 
     public function getNotifications($user_id) {
         $query = "SELECT id as notification_id, type, created_at, was_read, creator_id, post_id, comment_id FROM notifications WHERE receiver_id = :user_id ORDER BY created_at DESC";
@@ -65,6 +87,39 @@ class DatabaseHelper {
         $stmt->bindParam(':user_id', $user_id);
         $stmt->bindParam(':content', $content);
         return $stmt->execute();
+    }
+
+    // Funzione privata base per creare una notifica
+    private function createNotification($type, $receiver_id, $creator_id, $post_id, $comment_id) {
+        $query = "INSERT INTO notifications (type, receiver_id, creator_id, post_id, comment_id) VALUES (:type, :receiver_id, :creator_id, :post_id, :comment_id)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':type', $type);
+        $stmt->bindParam(':receiver_id', $receiver_id);
+        $stmt->bindParam(':creator_id', $creator_id);
+        $stmt->bindParam(':post_id', $post_id);
+        $stmt->bindParam(':comment_id', $comment_id);
+        return $stmt->execute();
+    }
+    // Crea una notifica di like per l'utente che ha creato il post
+    public function createLikeNotification($creator_id, $post_id) {
+        $post = getPostById($post_id);
+        createNotification(NotificationType::LIKE->value, $post["user_id"], $creator_id, $post_id, NULL);
+    }
+    // Crea una notifica di commento per l'utente che ha creato il post
+    public function createCommentNotification($creator_id, $post_id, $comment_id) {
+        $post = getPostById($post_id);
+        createNotification(NotificationType::COMMENT->value, $post["user_id"], $creator_id, $post_id, $comment_id);
+    }
+    // Crea una notifica di follow per l'utente che viene seguito
+    public function createFollowNotification($followed_id, $follower_id) {
+        createNotification(NotificationType::FOLLOW->value, $followed_id, $follower_id, NULL, NULL);
+    }
+    // Crea una notifica di nuovo post per ogni follower dell'utente che lo ha creato
+    public function createPostNotification($creator_id, $post_id) { // maybe creator_id is redundant here, we could get it from the post itself
+        $followers_ids = getFollowers($creator_id);
+        foreach ($followers_ids as $follower_id) {
+            createNotification(NotificationType::POST->value, $follower_id, $creator_id, $post_id, NULL);
+        }
     }
 }
 ?>
