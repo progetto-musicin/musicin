@@ -39,7 +39,7 @@ class DatabaseHelper {
     }
 
     public function getUserPosts($user_id) {
-        $query = "SELECT id as post_id, user_id, title, content, image, song, created_at FROM posts WHERE user_id = :user_id ORDER BY created_at DESC";
+        $query = "SELECT id, user_id, title, content, image, song, created_at FROM posts WHERE user_id = :user_id ORDER BY created_at DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
@@ -47,7 +47,7 @@ class DatabaseHelper {
         return $posts;
     }
     public function getPostById($post_id) {
-        $query = "SELECT id as post_id, user_id, title, content, image, song, created_at FROM posts WHERE id = :post_id";
+        $query = "SELECT id, user_id, title, content, image, song, created_at FROM posts WHERE id = :post_id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':post_id', $post_id);
         $stmt->execute();
