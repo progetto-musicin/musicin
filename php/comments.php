@@ -94,7 +94,7 @@ if (isset($_GET['post_id'])) {
             <div>
                 <h5 class="card-title">Aggiungi un commento</h5>
                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                    <div class="form-group">
+                    <div>
                         <label for="content">Scrivi il tuo commento</label>
                         <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
                     </div>
