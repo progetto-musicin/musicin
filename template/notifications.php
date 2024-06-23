@@ -12,16 +12,16 @@
                     <p>
                         <?php switch ($notification['type']):
                         case NotificationType::LIKE->value: ?>
-                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha messo mi piace al tuo <a href="post.php?id=<?php echo htmlspecialchars($notification['post_id']); ?>"> post</a>.
+                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha messo mi piace al tuo <a href="comments.php?post_id=<?php echo htmlspecialchars($notification['post_id']); ?>"> post</a>.
                         <?php break; ?>
                         <?php case NotificationType::COMMENT->value: ?>
-                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha <a href="post.php?id=<?php echo htmlspecialchars($notification["post_id"]); ?>#<?php echo htmlspecialchars($notification["comment_id"]); ?>">commentato</a> il tuo <a href="post.php?post_id=<?php echo $notification['post_id']; ?>">post</a>.
+                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha <a href="comments.php?post_id=<?php echo htmlspecialchars($notification["post_id"]); ?>#comment-<?php echo htmlspecialchars($notification["comment_id"]); ?>">commentato il tuo post</a>.
                         <?php break; ?>
                         <?php case NotificationType::FOLLOW->value: ?>
                             <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha iniziato a seguirti.
                         <?php break; ?>
                         <?php case NotificationType::POST->value: ?>
-                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha pubblicato un nuovo <a href="post.php?id=<?php echo htmlspecialchars($notification['post_id']); ?>">post</a>.
+                            <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha pubblicato un nuovo <a href="comments.php?post_id=<?php echo htmlspecialchars($notification['post_id']); ?>">post</a>.
                         <?php break; ?>
                         <?php endswitch; ?>
                     </p>

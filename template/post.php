@@ -11,7 +11,7 @@
     <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
 </div> -->
 
-<article class="post">
+<article class="post" id="post-<?php echo $post['id']; ?>">
     <header>
         <h2><?php echo htmlspecialchars($post['title']); ?></h2>
 <?php if (!empty($post['username'])): ?>
