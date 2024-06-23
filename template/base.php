@@ -10,6 +10,7 @@
 <?php if (!empty($templateParams["css"])): ?>
     <link rel='stylesheet' type='text/css' href='css/<?php echo $templateParams["css"]; ?>.css'>
 <?php endif; ?>
+    <script src='js/common.js'></script>
 <?php if (!empty($templateParams["js"])): ?>
     <script src='js/<?php echo $templateParams["js"]; ?>.js'></script>
 <?php endif; ?>
