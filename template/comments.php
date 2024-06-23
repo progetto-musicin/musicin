@@ -1,12 +1,5 @@
 <h2>Commenti per il post "<?php echo htmlspecialchars($post['title']); ?>"</h1>
 
-<!-- <section class="card mt-4">
-    <div class="card-body">
-        <h3 class="card-title"><?php echo htmlspecialchars($post['title']); ?></h5>
-        <p class="card-text"><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
-    </div>
-</section> -->
-
 <section>
     <?php require __DIR__ . "/post.php" ?>
 </section>

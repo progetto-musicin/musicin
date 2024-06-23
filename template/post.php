@@ -1,7 +1,24 @@
+<!-- <section class="card mt-4">
+    <div class="card-body">
+        <h3 class="card-title"><?php echo htmlspecialchars($post['title']); ?></h5>
+        <p class="card-text"><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
+    </div>
+</section> -->
+
+<!-- <div>
+    <h5><?php echo htmlspecialchars($post['title']); ?></h5>
+    <h6>Pubblicato da : <?php echo htmlspecialchars($post['username']); ?> alle :  <?php echo htmlspecialchars($post['created_at']); ?></h6>
+    <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
+</div> -->
+
 <article class="post">
     <header>
         <h2><?php echo htmlspecialchars($post['title']); ?></h2>
+<?php if (!empty($post['username'])): ?>
+    <p>Pubblicato da: <?php echo htmlspecialchars($post['username']); ?> alle: <?php echo htmlspecialchars($post['created_at']); ?></p>
+<?php else: ?>
         <p><?php echo htmlspecialchars($post['created_at']); ?></p>
+<?php endif; ?>
     </header>
     <section>
         <p><?php echo htmlspecialchars($post['content']); ?></p>
