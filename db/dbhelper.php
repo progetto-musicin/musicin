@@ -81,6 +81,15 @@ class DatabaseHelper {
         return $notifications;
     }
 
+    public function getNumUnreadNotifications($user_id) {
+        $query = "SELECT COUNT(*) as num_notifications FROM notifications WHERE receiver_id = :user_id AND was_read = 0";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result["num_notifications"];
+    }
+
     // Restituisce il numero di follower dell'utente con l'id passato come parametro
     public function getNumFollowers($user_id) {
         $query = "SELECT COUNT(*) as num_followers FROM follows WHERE followed_id = :followed_id";
@@ -167,6 +176,13 @@ class DatabaseHelper {
         foreach ($followers_ids as $follower_id) {
             createNotification(NotificationType::POST->value, $follower_id, $creator_id, $post_id, NULL);
         }
+    }
+
+    public function setNotificationRead($notification_id) {
+        $query = "UPDATE notifications SET was_read = 1 WHERE id = :notification_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':notification_id', $notification_id);
+        return $stmt->execute();
     }
 }
 ?>

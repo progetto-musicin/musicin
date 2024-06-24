@@ -5,6 +5,7 @@
     <?php else : ?>
         <ul>
             <?php foreach ($notifications as $notification) : ?>
+                <?php $dbh->setNotificationRead($notification["notification_id"]); ?>
                 <li>
                     <!-- <p><?php echo htmlspecialchars(($notification['created_at'])); ?></p> -->
                     <p><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d/m/Y H:i:s')); ?></p>

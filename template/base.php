@@ -20,7 +20,10 @@
         <header>
             <div class="row">
                 <h1>Music.In</h1>
-                <a href="notifications.php"><i class="bi bi-bell"></i></a>
+                <div class="column">
+                    <a href="notifications.php"><i class="bi bi-bell"></i>Notifiche:</a>
+                    <span id="notification_counter">0</span>
+                </div>
             </div>
         </header>
 
