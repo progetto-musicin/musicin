@@ -119,9 +119,9 @@ INSERT INTO `genres` (`id`, `name`) VALUES
 (5, 'Metal'),
 (6, 'Rap'),
 (7, 'Classical'),
-(11, 'Electronic'),
-(17, 'Techno'),
-(18, 'House');
+(8, 'Electronic'),
+(9, 'Techno'),
+(10, 'House');
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `image`) VALUES
 (1, 'admin', 'admin@admin.com', '', NULL),
