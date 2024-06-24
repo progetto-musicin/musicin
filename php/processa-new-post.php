@@ -18,33 +18,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Gestione upload immagine
     if (!empty($_FILES['attachment']['name'])) {
-        $image_name = basename($_FILES['attachment']['name']);
-        $image_path = $image_name;
-        $full_path = UPLOAD_DIR_SAVE . $image_path;
-        if (!move_uploaded_file($_FILES['attachment']['tmp_name'], $full_path)) {
-            echo "Si è verificato un errore durante il caricamento dell'immagine.";
-            error_log("Errore caricamento immagine: " . $_FILES['attachment']['error']);
-            error_log("Percorso destinazione immagine: " . $full_path);
+        // $image_name = basename($_FILES['attachment']['name']);
+        // $image_path = $image_name;
+        // $full_path = UPLOAD_DIR_SAVE . $image_path;
+        // if (!move_uploaded_file($_FILES['attachment']['tmp_name'], $full_path)) {
+        //     echo "Si è verificato un errore durante il caricamento dell'immagine.";
+        //     error_log("Errore caricamento immagine: " . $_FILES['attachment']['error']);
+        //     error_log("Percorso destinazione immagine: " . $full_path);
+        //     exit();
+        // } else {
+        //     // Logging per debugging
+        //     error_log("Immagine caricata con successo: " . $full_path);
+        // }
+
+        list($result, $msg) = uploadImage(UPLOAD_DIR_SAVE, $_FILES['attachment']);
+        if ($result == 0) {
+            echo("Errore caricamento immagine: " . $msg);
+            error_log("Errore caricamento immagine: " . $msg);
             exit();
         } else {
-            // Logging per debugging
-            error_log("Immagine caricata con successo: " . $full_path);
+            $image_path = $msg;
         }
     }
 
     // Gestione upload audio
     if (!empty($_FILES['audio']['name'])) {
-        $audio_name = basename($_FILES['audio']['name']);
-        $audio_path = $audio_name;
-        $full_path = UPLOAD_DIR_SAVE . $audio_path;
-        if (!move_uploaded_file($_FILES['audio']['tmp_name'], $full_path)) {
-            echo "Si è verificato un errore durante il caricamento dell'audio.";
-            error_log("Errore caricamento audio: " . $_FILES['audio']['error']);
-            error_log("Percorso destinazione audio: " . $full_path);
+        // $audio_name = basename($_FILES['audio']['name']);
+        // $audio_path = $audio_name;
+        // $full_path = UPLOAD_DIR_SAVE . $audio_path;
+        // if (!move_uploaded_file($_FILES['audio']['tmp_name'], $full_path)) {
+        //     echo "Si è verificato un errore durante il caricamento dell'audio.";
+        //     error_log("Errore caricamento audio: " . $_FILES['audio']['error']);
+        //     error_log("Percorso destinazione audio: " . $full_path);
+        //     exit();
+        // } else {
+        //     // Logging per debugging
+        //     error_log("Audio caricato con successo: " . $full_path);
+        // }
+
+        list($result, $msg) = uploadSong(UPLOAD_DIR_SAVE, $_FILES['audio']);
+        if ($result == 0) {
+            echo("Errore caricamento immagine: " . $msg);
+            error_log("Errore caricamento immagine: " . $msg);
             exit();
         } else {
-            // Logging per debugging
-            error_log("Audio caricato con successo: " . $full_path);
+            $audio_path = $msg;
         }
     }
 
