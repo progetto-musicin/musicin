@@ -162,4 +162,11 @@ INSERT INTO `notifications` (`id`, `type`, `created_at`, `was_read`, `receiver_i
 INSERT INTO `notifications` (`id`, `type`, `created_at`, `receiver_id`, `creator_id`, `post_id`, `comment_id`) VALUES
 (4, 0, '2024-06-16 13:57:08', 1, 5, 1, NULL);
 
+INSERT into `usergenres` (`genre_id`, `user_id`) VALUES
+(1, 1),
+(2, 1),
+(1, 2),
+(2, 2),
+(3, 2);
+
 COMMIT;
