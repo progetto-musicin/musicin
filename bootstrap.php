@@ -4,7 +4,9 @@ require_once(__DIR__ . "/utils/constants.php");
 require_once(__DIR__ . "/utils/functions.php");
 
 if (!file_exists(UPLOAD_DIR_SAVE)) {
-    mkdir(UPLOAD_DIR_SAVE, 0777, true);
+    if (!mkdir(UPLOAD_DIR_SAVE, 0777, true)) {
+        die("Errore nella creazione della cartella di upload");
+    }
 }
 
 if (!empty($_GET['testing'])) {
