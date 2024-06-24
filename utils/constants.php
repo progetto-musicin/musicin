@@ -1,6 +1,6 @@
 <?php
 
-define("UPLOAD_DIR", "./upload/");
+define("UPLOAD_DIR", __DIR__ . "/../upload/");
 
 enum NotificationType: int {
     case LIKE = 0;
