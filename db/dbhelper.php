@@ -124,6 +124,16 @@ class DatabaseHelper {
         return $result["num_likes"];
     }
 
+    public function doesUserLikePost($user_id, $post_id) {
+        $query = "SELECT COUNT(*) as num_likes FROM likes WHERE user_id = :user_id AND post_id = :post_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":user_id", $user_id);
+        $stmt->bindParam(":post_id", $post_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result["num_likes"] > 0;
+    }
+
     public function createPost($user_id, $title, $content, $image_path, $audio_path) {
         $stmt = $this->prepare("INSERT INTO posts (user_id, title, content, image, song, created_at) VALUES (:user_id, :title, :content, :image, :song, NOW())");
         $stmt->bindParam(':user_id', $user_id);
