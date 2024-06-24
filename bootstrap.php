@@ -3,6 +3,10 @@ session_start();
 require_once(__DIR__ . "/utils/constants.php");
 require_once(__DIR__ . "/utils/functions.php");
 
+if (!file_exists(UPLOAD_DIR_SAVE)) {
+    mkdir(UPLOAD_DIR_SAVE, 0777, true);
+}
+
 if (!empty($_GET['testing'])) {
     $_SESSION['user_id'] = $_GET['testing'];   // temporaneamente per testing
 }
