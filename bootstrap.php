@@ -3,8 +3,8 @@ session_start();
 require_once(__DIR__ . "/utils/constants.php");
 require_once(__DIR__ . "/utils/functions.php");
 
-if (isset($_GET['testing'])) {
-    $_SESSION['user_id'] = 1;   // temporaneamente per testing
+if (!empty($_GET['testing'])) {
+    $_SESSION['user_id'] = $_GET['testing'];   // temporaneamente per testing
 }
 
 // Verifica se l'utente è loggato
