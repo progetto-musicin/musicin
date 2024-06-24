@@ -26,14 +26,14 @@
         <!-- Player audio -->
         <?php if (!empty($post['song'])): ?>
             <audio controls>
-                <source src="<?php echo htmlspecialchars($post['song']); ?>" type="audio/mpeg">
+                <source src="<?php echo UPLOAD_DIR . htmlspecialchars($post['song']); ?>" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         <?php endif; ?>
 
         <!-- Immagine post -->
         <?php if (!empty($post['image'])): ?>
-            <img src="<?php echo htmlspecialchars($post['image']); ?>" alt="Immagine del post">
+            <img src="<?php echo UPLOAD_DIR . htmlspecialchars($post['image']); ?>" alt="Immagine del post">
         <?php endif; ?>
     </section>
     <footer>
