@@ -27,6 +27,10 @@ class DatabaseHelper {
         return $this->conn->prepare($query);
     }
 
+    public function getLastInsertId() {
+        return $this->conn->lastInsertId();
+    }
+
     // Altri metodi...
 
     public function getUserInfo($user_id) {
@@ -120,12 +124,18 @@ class DatabaseHelper {
         return $result["num_likes"];
     }
 
-    public function createPost($user_id, $content) {
-        $query = "INSERT INTO posts (user_id, content, created_at) VALUES (:user_id, :content, NOW())";
-        $stmt = $this->conn->prepare($query);
+    public function createPost($user_id, $title, $content, $image_path, $audio_path) {
+        $stmt = $this->prepare("INSERT INTO posts (user_id, title, content, image, song, created_at) VALUES (:user_id, :title, :content, :image, :song, NOW())");
         $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':title', $title);
         $stmt->bindParam(':content', $content);
-        return $stmt->execute();
+        $stmt->bindParam(':image', $image_path);
+        $stmt->bindParam(':song', $audio_path);
+        $result = $stmt->execute();
+        if ($result) {
+            $this->createPostNotification($user_id, $this->getLastInsertId());
+        }
+        return $result;
     }
 
     public function getCommentsByPostId($post_id) {
@@ -142,7 +152,11 @@ class DatabaseHelper {
         $stmt->bindParam(':content', $content);
         $stmt->bindParam(':user_id', $user_id);
         $stmt->bindParam(':post_id', $post_id);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        if ($result) {
+            $this->createCommentNotification($user_id, $post_id, $this->getLastInsertId());
+        }
+        return $result;
     }
 
     // Funzione privata base per creare una notifica
@@ -158,23 +172,26 @@ class DatabaseHelper {
     }
     // Crea una notifica di like per l'utente che ha creato il post
     public function createLikeNotification($creator_id, $post_id) {
-        $post = getPostById($post_id);
-        createNotification(NotificationType::LIKE->value, $post["user_id"], $creator_id, $post_id, NULL);
+        $post = $this->getPostById($post_id);
+        $this->createNotification(NotificationType::LIKE->value, $post["user_id"], $creator_id, $post_id, NULL);
     }
     // Crea una notifica di commento per l'utente che ha creato il post
     public function createCommentNotification($creator_id, $post_id, $comment_id) {
-        $post = getPostById($post_id);
-        createNotification(NotificationType::COMMENT->value, $post["user_id"], $creator_id, $post_id, $comment_id);
+        $post = $this->getPostById($post_id);
+        if ($creator_id != $post['user_id']) {
+            $this->createNotification(NotificationType::COMMENT->value, $post["user_id"], $creator_id, $post_id, $comment_id);
+        }
     }
     // Crea una notifica di follow per l'utente che viene seguito
     public function createFollowNotification($followed_id, $follower_id) {
-        createNotification(NotificationType::FOLLOW->value, $followed_id, $follower_id, NULL, NULL);
+        $this->createNotification(NotificationType::FOLLOW->value, $followed_id, $follower_id, NULL, NULL);
     }
     // Crea una notifica di nuovo post per ogni follower dell'utente che lo ha creato
     public function createPostNotification($creator_id, $post_id) { // maybe creator_id is redundant here, we could get it from the post itself
-        $followers_ids = getFollowers($creator_id);
+        $followers_ids = $this->getFollowers($creator_id);
+        $followers_ids = array_column($followers_ids, "follower_id");
         foreach ($followers_ids as $follower_id) {
-            createNotification(NotificationType::POST->value, $follower_id, $creator_id, $post_id, NULL);
+            $this->createNotification(NotificationType::POST->value, $follower_id, $creator_id, $post_id, NULL);
         }
     }
 

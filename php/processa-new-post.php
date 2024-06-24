@@ -48,13 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Salvataggio post nel database
     try {
-        $stmt = $dbh->prepare("INSERT INTO posts (user_id, title, content, image, song, created_at) VALUES (:user_id, :title, :content, :image, :song, NOW())");
-        $stmt->bindParam(':user_id', $user_id);
-        $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':content', $content);
-        $stmt->bindParam(':image', $image_path);
-        $stmt->bindParam(':song', $audio_path);
-        $stmt->execute();
+        $dbh->createPost($user_id, $title, $content, $image_path, $audio_path);
         header("Location: ../profile.php");
         exit();
     } catch (PDOException $e) {
