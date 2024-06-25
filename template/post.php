@@ -20,7 +20,7 @@
         <p><?php echo htmlspecialchars($post['created_at']); ?></p>
 <?php endif; ?>
     </header>
-    <section>
+    <div>
         <p><?php echo htmlspecialchars($post['content']); ?></p>
         
         <!-- Player audio -->
@@ -35,7 +35,7 @@
         <?php if (!empty($post['image'])): ?>
             <img src="<?php echo UPLOAD_DIR . htmlspecialchars($post['image']); ?>" alt="Immagine del post">
         <?php endif; ?>
-    </section>
+    </div>
 
         <footer>
         <ul>
