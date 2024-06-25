@@ -47,7 +47,7 @@ class DatabaseHelper {
     }    
 
     public function updateProfileImage($user_id, $image_path) {
-        $query = "UPDATE users SET profile_image = :image_path WHERE id = :user_id";
+        $query = "UPDATE users SET image = :image_path WHERE id = :user_id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':image_path', $image_path);
         $stmt->bindParam(':user_id', $user_id);

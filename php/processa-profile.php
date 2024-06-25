@@ -10,6 +10,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $surname = $_POST['surname'] ? $_POST['surname'] : null;
     $genre_id = $_POST['genre'] ? $_POST['genre'] : null;
 
+    $image = $_FILES['image'];
+    if (!empty($image)) {
+        list($result, $msg) = uploadImage(UPLOAD_DIR_SAVE, $image);
+        if($result == 1) {
+            $image_path = $msg;
+            $dbh->updateProfileImage($user_id, $image_path);
+        } else {
+            echo $msg;
+            exit();
+        }
+    }
+
     try {
         $dbh->updateProfileInfo($user_id, $name, $surname, $genre_id);
 

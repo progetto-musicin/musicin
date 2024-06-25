@@ -10,7 +10,7 @@
         <label for="image">Immagine Profilo:</label>
         <input type="file" id="image" name="image"><br>
         <?php if ($user['profile_image']): ?>
-            <img src="<?php echo htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo" style="width: 100px; height: auto;"><br>
+            <img src="<?php echo UPLOAD_DIR . htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo" style="width: 100px; height: auto;"><br>
         <?php endif; ?>
 
         <!-- Selezione del genere musicale preferito -->

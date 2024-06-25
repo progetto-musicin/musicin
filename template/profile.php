@@ -7,7 +7,7 @@
             <h2><?php echo htmlspecialchars($user['username']); ?></h2>
 
             <!-- Immagine Profilo -->
-            <img src="<?php echo htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo">
+            <img src="<?php echo UPLOAD_DIR . htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo">
 
             <!-- Numero di Follower e Seguiti -->
             <ul>
