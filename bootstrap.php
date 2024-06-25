@@ -13,8 +13,13 @@ if (!empty($_GET['testing'])) {
     $_SESSION['user_id'] = $_GET['testing'];   // temporaneamente per testing
 }
 
+$pagesWithoutLogin = [
+    "login.php",
+    "register.php"
+];
+
 // Verifica se l'utente è loggato
-if (!isUserLoggedIn() && (basename($_SERVER['PHP_SELF']) != 'login.php' || basename($_SERVER['PHP_SELF']) != 'register.php')) {
+if (!isUserLoggedIn() && (!in_array(basename($_SERVER['PHP_SELF']), $pagesWithoutLogin))) {
     header("Location: /login.html"); // Reindirizza alla pagina di login se l'utente non è loggato
     exit();
 }
