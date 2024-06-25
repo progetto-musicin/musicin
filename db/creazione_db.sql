@@ -57,10 +57,10 @@ create table genres (
      `name` varchar(255) not null,
      constraint `IDgenres` primary key (`id`));
 
-create table usergenres (
-     `genre_id` int not null,
-     `user_id` int not null,
-     constraint `IDusergenres` primary key (`genre_id`, `user_id`));
+-- create table usergenres (
+--      `genre_id` int not null,
+--      `user_id` int not null,
+--      constraint `IDusergenres` primary key (`genre_id`, `user_id`));
 
 create table users (
      `id` int not null AUTO_INCREMENT,
@@ -70,6 +70,7 @@ create table users (
      `name` varchar(255),
      `surname` varchar(255),
      `image` varchar(255),
+     `genre_id` int,
      constraint `IDUser` primary key (`id`),
      unique key `username` (`username`),
      unique key `email` (`email`));
@@ -99,9 +100,12 @@ alter table `notifications`
 alter table `posts`
      add constraint `FKpubblica` foreign key (`user_id`) references `users` (`id`);
 
-alter table `usergenres`
-     add constraint `FKlis_use` foreign key (`user_id`) references `users` (`id`),
-     add constraint `FKlis_gen` foreign key (`genre_id`) references `genres` (`id`);
+-- alter table `usergenres`
+--      add constraint `FKlis_use` foreign key (`user_id`) references `users` (`id`),
+--      add constraint `FKlis_gen` foreign key (`genre_id`) references `genres` (`id`);
+
+alter table `users`
+     add constraint `FKfavgenre` foreign key (`genre_id`) references `genres` (`id`);
 
 
 -- Index Section
@@ -162,11 +166,11 @@ INSERT INTO `notifications` (`id`, `type`, `created_at`, `was_read`, `receiver_i
 INSERT INTO `notifications` (`id`, `type`, `created_at`, `receiver_id`, `creator_id`, `post_id`, `comment_id`) VALUES
 (4, 0, '2024-06-16 13:57:08', 1, 5, 1, NULL);
 
-INSERT into `usergenres` (`genre_id`, `user_id`) VALUES
-(1, 1),
-(2, 1),
-(1, 2),
-(2, 2),
-(3, 2);
+-- INSERT into `usergenres` (`genre_id`, `user_id`) VALUES
+-- (1, 1),
+-- (2, 1),
+-- (1, 2),
+-- (2, 2),
+-- (3, 2);
 
 COMMIT;
