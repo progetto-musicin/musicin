@@ -7,9 +7,9 @@
             <?php foreach ($notifications as $notification) : ?>
                 <?php $dbh->setNotificationRead($notification["notification_id"]); ?>
                 <li>
-                    <!-- <p><?php echo htmlspecialchars(($notification['created_at'])); ?></p> -->
+                    <?php /* <p><?php echo htmlspecialchars(($notification['created_at'])); ?></p> */ ?>
                     <p><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d/m/Y H:i:s')); ?></p>
-                    <!-- <p><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d F Y H:i:s')); ?></p> -->
+                    <?php /* <p><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d F Y H:i:s')); ?></p> */ ?>
                     <p>
                         <?php switch ($notification['type']):
                         case NotificationType::LIKE->value: ?>
