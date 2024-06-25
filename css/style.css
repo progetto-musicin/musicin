@@ -91,8 +91,7 @@ form h2 {
     border-bottom: 2px solid var(--clr);
 }
 
-input[type="submit"],
-button {
+.inputBox input[type="submit"] {
     background: var(--clr);
     border: none;
     padding: 15px;
@@ -104,13 +103,9 @@ button {
     letter-spacing: 0.1em;
     cursor: pointer;
     transition: 0.5s;
-    display: block;
-    width: 100%;
-    margin: 20px 0;
 }
 
-input[type="submit"]:hover,
-button:hover {
+.inputBox input[type="submit"]:hover {
     letter-spacing: 0.35em;
 }
 
@@ -131,7 +126,7 @@ form p a {
     top: 50%;
     transform: translateY(-50%);
     right: 20px;
-    background: url(../upload/show.png);
+    background: url(/upload/show.png);
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -139,7 +134,7 @@ form p a {
 }
 
 #toggle.hide {
-    background: url(../upload/hide.png);
+    background: url(/upload/hide.png);
     background-size: cover;
 }
 
@@ -148,7 +143,7 @@ form p a {
     top: 50%;
     transform: translateY(-50%);
     right: 20px;
-    background: url(../upload/show.png);
+    background: url(/upload/show.png);
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -156,7 +151,7 @@ form p a {
 }
 
 #toggleConfirm.hide {
-    background: url(../upload/hide.png);
+    background: url(/upload/hide.png);
     background-size: cover;
 }
 
@@ -192,7 +187,7 @@ form p a {
     width: 10px;
     height: 10px;
     display: inline-flex;
-    background-image: url("../upload/circle-dot.png");
+    background-image: url("/upload/circle-dot.png");
     background-size: cover;
     content: "";
 }
@@ -205,17 +200,12 @@ form p a {
     width: 10px;
     height: 10px;
     display: inline-flex;
-    background-image: url("../upload/check.png");
+    background-image: url("/upload/check.png");
     background-size: cover;
     content: "";
 }
 
 .validation-message {
-    color: red;
-    margin-top: 1px;
-}
-
-.alert-danger {
     color: red;
     margin-top: 1px;
 }
