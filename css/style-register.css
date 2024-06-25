@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --clr: #0ab3ff;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1c2630;
+}
+
+form {
+    background: #29313c;
+    padding: 60px 80px 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+form h2 {
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+}
+
+.inputBox {
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #999;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+}
+
+.inputBox label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    pointer-events: none;
+    color: #999;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    text-align: left;
+}
+
+.inputBox label span {
+    position: relative;
+    display: inline-flex;
+    letter-spacing: 0.05em;
+    transition: 0.2s ease-in-out;
+}
+
+.inputBox input:focus ~ label,
+.inputBox input:valid ~ label {
+    top: -18px;
+    font-size: 12px;
+    color: var(--clr);
+}
+
+.inputBox input:focus ~ label {
+    color: #fff;
+}
+
+.inputBox input:focus,
+.inputBox input:valid {
+    border-bottom: 2px solid var(--clr);
+}
+
+input[type="submit"],
+button {
+    background: var(--clr);
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    color: #1c2630;
+    font-weight: 600;
+    font-size: 1.15em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: 0.5s;
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    letter-spacing: 0.35em;
+}
+
+form p {
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+form p a {
+    color: var(--clr);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    background: url(/upload/show.png);
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#toggle.hide {
+    background: url(/upload/hide.png);
+    background-size: cover;
+}
+
+#toggleConfirm {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    background: url(/upload/show.png);
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#toggleConfirm.hide {
+    background: url(/upload/hide.png);
+    background-size: cover;
+}
+
+.validation {
+    display: none;
+    background: #376488;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 15);
+}
+
+.validation ul {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.validation ul li {
+    position: relative;
+    display: inline-flex;
+    list-style: none;
+    color: #fff;
+    font-size: 0.85em;
+    transition: 0.5s;
+}
+
+.validation ul li.valid {
+    color: rgba(17, 255, 0, 0.5);
+}
+
+.validation ul li::before {
+    width: 10px;
+    height: 10px;
+    display: inline-flex;
+    background-image: url("/upload/circle-dot.png");
+    background-size: cover;
+    content: "";
+}
+
+.show-validation {
+    display: block !important;
+}
+
+.validation ul li.valid::before {
+    width: 10px;
+    height: 10px;
+    display: inline-flex;
+    background-image: url("/upload/check.png");
+    background-size: cover;
+    content: "";
+}
+
+.validation-message {
+    color: red;
+    margin-top: 1px;
+}
+
+.alert-danger {
+    color: red;
+    margin-top: 1px;
+}

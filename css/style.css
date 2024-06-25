@@ -91,8 +91,7 @@ form h2 {
     border-bottom: 2px solid var(--clr);
 }
 
-input[type="submit"],
-button {
+.inputBox input[type="submit"] {
     background: var(--clr);
     border: none;
     padding: 15px;
@@ -104,13 +103,9 @@ button {
     letter-spacing: 0.1em;
     cursor: pointer;
     transition: 0.5s;
-    display: block;
-    width: 100%;
-    margin: 20px 0;
 }
 
-input[type="submit"]:hover,
-button:hover {
+.inputBox input[type="submit"]:hover {
     letter-spacing: 0.35em;
 }
 
@@ -143,7 +138,74 @@ form p a {
     background-size: cover;
 }
 
-.alert-danger {
+#toggleConfirm {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    background: url(/upload/show.png);
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#toggleConfirm.hide {
+    background: url(/upload/hide.png);
+    background-size: cover;
+}
+
+.validation {
+    display: none;
+    background: #376488;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 15);
+}
+
+.validation ul {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.validation ul li {
+    position: relative;
+    display: inline-flex;
+    list-style: none;
+    color: #fff;
+    font-size: 0.85em;
+    transition: 0.5s;
+}
+
+.validation ul li.valid {
+    color: rgba(17, 255, 0, 0.5);
+}
+
+.validation ul li::before {
+    width: 10px;
+    height: 10px;
+    display: inline-flex;
+    background-image: url("/upload/circle-dot.png");
+    background-size: cover;
+    content: "";
+}
+
+.show-validation {
+    display: block !important;
+}
+
+.validation ul li.valid::before {
+    width: 10px;
+    height: 10px;
+    display: inline-flex;
+    background-image: url("/upload/check.png");
+    background-size: cover;
+    content: "";
+}
+
+.validation-message {
     color: red;
     margin-top: 1px;
 }

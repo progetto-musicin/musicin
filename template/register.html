@@ -1,54 +1,156 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music.In-Registrazione</title>
-    <link rel="stylesheet" href="css/style-register.css">
+    <title>MusicIn - Sign Up</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style-register.css">
 </head>
+
 <body>
-    <h2>Registrazione</h2>
-    <form id="registrationForm">
-        <div>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">SIGN UP</h2>
+                <form action="register.php" method="POST" onsubmit="return checkPasswordMatch(event);">
+                    <div class="form-group inputBox">
+                        <input type="text" class="form-control" name="username" id="username" required>
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="form-group inputBox">
+                        <input type="email" class="form-control" name="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group inputBox">
+                        <input type="password" class="form-control" name="password" id="passwordInput" required onkeyup="checkPassword(this.value)" onclick="toggleValidation();">
+                        <label for="passwordInput">Create Password</label>
+                        <div id="toggle" onclick="showHide();"></div>
+                    </div>
+                    <div class="form-group validation" id="passwordValidation">
+                        <ul>
+                            <li id="lower">At least one lowercase character</li>
+                            <li id="upper">At least one uppercase character</li>
+                            <li id="number">At least one number</li>
+                            <li id="special">At least one special character</li>
+                            <li id="length">At least 8 characters</li>
+                        </ul>
+                    </div>
+                    <div class="form-group inputBox">
+                        <input type="password" class="form-control" name="confirmPassword" id="confirmPasswordInput" required oninput="checkPasswordMatch(event);">
+                        <label for="confirmPasswordInput">Confirm Password</label>
+                        <div id="toggleConfirm" onclick="showHideConfirm();"></div>
+                    </div>
+                    <div id="validationMessage" class="validation-message"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Create</button>
+                    <p class="text-center mt-3">Already have an account? <a href="login.html">Login</a></p>
+                </form>
+            </div>
         </div>
-        <div>
-            <label for="email">Indirizzo Email</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div>
-            <label for="confirmPassword">Conferma Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required>
-            <div id="passwordError" style="color:red;"></div>
-        </div>
-        <button type="button" onclick="register()">Registrati</button>
-        <button type="button" onclick="resetForm()">Annulla</button>
-    </form>
+    </div>
 
     <script>
-        function register() {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const passwordError = document.getElementById('passwordError');
+        function checkPassword(data) {
+            const lower = new RegExp('(?=.*[a-z])');
+            const upper = new RegExp('(?=.*[A-Z])');
+            const number = new RegExp('(?=.*[0-9])');
+            const special = new RegExp('(?=.*[!@#\$!%\^&\*])');
+            const length = new RegExp('(?=.{8,})');
 
-            if (password !== confirmPassword) {
-                passwordError.textContent = "Le password non coincidono.";
+            const lowerCase = document.getElementById('lower');
+            const upperCase = document.getElementById('upper');
+            const digit = document.getElementById('number');
+            const specialChar = document.getElementById('special');
+            const minLength = document.getElementById('length');
+
+            // lower case validation check
+            if (lower.test(data)) {
+                lowerCase.classList.add('valid');
             } else {
-                passwordError.textContent = "";
-                alert("Registrazione completata con successo!");
-                window.location.href = "login.html";
+                lowerCase.classList.remove('valid');
+            }
+            // upper case validation check
+            if (upper.test(data)) {
+                upperCase.classList.add('valid');
+            } else {
+                upperCase.classList.remove('valid');
+            }
+            // number case validation check
+            if (number.test(data)) {
+                digit.classList.add('valid');
+            } else {
+                digit.classList.remove('valid');
+            }
+            // special character validation check
+            if (special.test(data)) {
+                specialChar.classList.add('valid');
+            } else {
+                specialChar.classList.remove('valid');
+            }
+            // minimum length validation check
+            if (length.test(data)) {
+                minLength.classList.add('valid');
+            } else {
+                minLength.classList.remove('valid');
             }
         }
 
-        function resetForm() {
-            document.getElementById('registrationForm').reset();
-            document.getElementById('passwordError').textContent = "";
+        function checkPasswordMatch(event) {
+            const password = document.getElementById('passwordInput').value;
+            const confirmPassword = document.getElementById('confirmPasswordInput').value;
+
+            const validationMessage = document.getElementById('validationMessage');
+
+            if (password !== confirmPassword) {
+                validationMessage.textContent = "Passwords don't match.";
+                validationMessage.style.display = "block";
+                event.preventDefault();
+                return false;
+            } else {
+                validationMessage.textContent = "";
+                validationMessage.style.display = "none";
+                return true;
+            }
         }
+
+        function showHide() {
+            var passwordInput = document.getElementById('passwordInput');
+            var toggle = document.getElementById('toggle');
+            if (passwordInput.type === 'password') {
+                passwordInput.setAttribute('type', 'text');
+                toggle.classList.add('hide');
+            } else {
+                passwordInput.setAttribute('type', 'password');
+                toggle.classList.remove('hide');
+            }
+        }
+
+        function showHideConfirm() {
+            var confirmPasswordInput = document.getElementById('confirmPasswordInput');
+            var toggleConfirm = document.getElementById('toggleConfirm');
+            if (confirmPasswordInput.type === 'password') {
+                confirmPasswordInput.setAttribute('type', 'text');
+                toggleConfirm.classList.add('hide');
+            } else {
+                confirmPasswordInput.setAttribute('type', 'password');
+                toggleConfirm.classList.remove('hide');
+            }
+        }
+
+        function toggleValidation() {
+            var validation = document.querySelector('.validation');
+            validation.classList.toggle('show-validation');
+        }
+
+        document.addEventListener('click', function(event) {
+            const targetElement = event.target;
+            const validation = document.querySelector('.validation');
+            if (!targetElement.matches('#passwordInput')) {
+                validation.classList.remove('show-validation');
+            }
+        });
     </script>
 </body>
+
 </html>
