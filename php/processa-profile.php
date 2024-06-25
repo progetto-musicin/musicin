@@ -6,9 +6,9 @@ require_once __DIR__ . '/../bootstrap.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_SESSION['user_id']; 
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $genre_id = $_POST['genre'];
+    $name = $_POST['name'] ? $_POST['name'] : null;
+    $surname = $_POST['surname'] ? $_POST['surname'] : null;
+    $genre_id = $_POST['genre'] ? $_POST['genre'] : null;
 
     try {
         $dbh->updateProfileInfo($user_id, $name, $surname, $genre_id);
