@@ -31,7 +31,78 @@ class DatabaseHelper {
         return $this->conn->lastInsertId();
     }
 
-    // Altri metodi...
+    public function updateProfileInfo($user_id, $name, $surname, $genre_id) {
+        // Aggiorna il nome e il cognome dell'utente nella tabella users
+        $query = "UPDATE users SET name = :name, surname = :surname WHERE id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':surname', $surname);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+    
+        // Aggiorna il genere musicale preferito dell'utente nella tabella usergenres
+        $query = "REPLACE INTO usergenres (user_id, genre_id) VALUES (:user_id, :genre_id)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':genre_id', $genre_id);
+        return $stmt->execute();
+    }
+
+    public function getUserGenre($user_id, $genre_id) {
+        $query = "SELECT * FROM usergenres WHERE user_id = :user_id AND genre_id = :genre_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':genre_id', $genre_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+
+    public function updateProfileImage($user_id, $image_path) {
+        $query = "UPDATE users SET profile_image = :image_path WHERE id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':image_path', $image_path);
+        $stmt->bindParam(':user_id', $user_id);
+        return $stmt->execute();
+    }
+    public function updateUserGenre($user_id, $genre_id) {
+        // Controlla se esiste già un record per l'utente in usergenres
+        $query = "SELECT * FROM usergenres WHERE user_id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($result) {
+            // Se esiste, aggiorna il genere musicale preferito dell'utente
+            $query = "UPDATE usergenres SET genre_id = :genre_id WHERE user_id = :user_id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':genre_id', $genre_id);
+            $stmt->bindParam(':user_id', $user_id);
+            return $stmt->execute();
+        } else {
+            // Se non esiste, inserisci un nuovo record in usergenres
+            $query = "INSERT INTO usergenres (user_id, genre_id) VALUES (:user_id, :genre_id)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->bindParam(':genre_id', $genre_id);
+            return $stmt->execute();
+        }
+    }
+    
+    public function insertUserGenre($user_id, $genre_id) {
+        try {
+            $query = "INSERT INTO usergenres (user_id, genre_id) VALUES (:user_id, :genre_id)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->bindParam(':genre_id', $genre_id);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            // Gestione dell'eccezione in caso di errore durante l'inserimento
+            echo "Errore durante l'inserimento del genere utente: " . $e->getMessage();
+            return false;
+        }
+    }
 
     public function getUserInfo($user_id) {
         $query_user = "SELECT username, email, name, surname, image as profile_image FROM users WHERE id = :user_id";
@@ -168,6 +239,23 @@ class DatabaseHelper {
         }
         return $result;
     }
+
+    public function getAllGenres() {
+        $query = "SELECT id, name FROM genres";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getPostLikes($post_id) {
+        $query = "SELECT u.username FROM likes l JOIN users u ON l.user_id = u.id WHERE l.post_id = :post_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":post_id", $post_id);
+        $stmt->execute();
+        $likes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $likes;
+    }
+    
 
     // Funzione privata base per creare una notifica
     private function createNotification($type, $receiver_id, $creator_id, $post_id, $comment_id) {
