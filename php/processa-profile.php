@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $genre_id = $_POST['genre'] ? $_POST['genre'] : null;
 
     $image = $_FILES['image'];
-    if (!empty($image)) {
+    if (!empty($image["name"])) {
         list($result, $msg) = uploadImage(UPLOAD_DIR_SAVE, $image);
         if($result == 1) {
             $image_path = $msg;
