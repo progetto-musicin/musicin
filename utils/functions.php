@@ -9,11 +9,9 @@ function isUserLoggedIn() {
     return !empty(getCurrentUserId());
 }
 
-function uploadFile($path, $file, $acceptedExtensions) {
+function uploadFile($path, $file, $acceptedExtensions, $maxKB = 5000) {
     $fileName = basename($file["name"]);
     $fullPath = $path.$fileName;
-
-    $maxKB = 500;
     $result = 0;
     $msg = "";
 
@@ -74,7 +72,7 @@ function uploadImage($path, $image) {
 }
 
 function uploadSong($path, $song) {
-    return uploadFile($path, $song, array());
+    return uploadFile($path, $song, array(), 10000);
 }
 
 ?>
