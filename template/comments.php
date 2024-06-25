@@ -1,6 +1,4 @@
-<section>
-    <?php require __DIR__ . "/post.php" ?>
-</section>
+<?php require __DIR__ . "/post.php" ?>
 
 <section>
     <h2>Commenti per il post "<?php echo htmlspecialchars($post['title']); ?>"</h2>
