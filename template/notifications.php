@@ -1,5 +1,5 @@
-<h2>Centro Notifiche</h2>
 <section>
+    <h2>Centro Notifiche</h2>
     <?php if (empty($notifications)) : ?>
         <p>Non hai ancora nessuna notifica.</p>
     <?php else : ?>
