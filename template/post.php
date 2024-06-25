@@ -1,4 +1,5 @@
-<!-- <section class="card mt-4">
+<?php /*
+<section class="card mt-4">
     <div class="card-body">
         <h3 class="card-title"><?php echo htmlspecialchars($post['title']); ?></h5>
         <p class="card-text"><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
@@ -9,7 +10,8 @@
     <h5><?php echo htmlspecialchars($post['title']); ?></h5>
     <h6>Pubblicato da : <?php echo htmlspecialchars($post['username']); ?> alle :  <?php echo htmlspecialchars($post['created_at']); ?></h6>
     <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
-</div> -->
+</div>
+*/ ?>
 
 <article class="post" id="post-<?php echo $post['id']; ?>">
     <header>
@@ -37,7 +39,7 @@
         <?php endif; ?>
     </div>
 
-        <footer>
+    <footer>
         <ul>
             <li>
                 <button class="like-button" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
