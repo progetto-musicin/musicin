@@ -27,21 +27,29 @@
             </div>
         </header>
 
-        <nav>
-            <form class="d-flex" role="search" action="search.php" method="get">
-                <select class="form-select me-2" name="search_type" aria-label="Tipo di ricerca">
-                    <option value="username">Username</option>
-                    <option value="genre">Genere</option>
-                </select>
-                <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <ul>
-                <li><a href="index.php"><i class="bi bi-house"></i>Home</a></li>
-                <li><a href="profile.php"><i class="bi bi-person"></i>Profilo</a></li>
-                <li><a href="new-post.php"><i class="bi bi-plus-circle"></i>Nuovo Post</a></li>
-                <li><a href="logout.php"><i class="bi bi-box-arrow-right"></i>Logout</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="container">
+                <form class="d-flex" role="search" action="search.php" method="get">
+                    <select class="form-select me-2" name="search_type" aria-label="Tipo di ricerca">
+                        <option value="username">Username</option>
+                        <option value="genre">Genere</option>
+                    </select>
+                    <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="px-5 navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="nav nav-pills col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0"> -->
+                        <li class="nav-item"><a class="nav-link <?php markIfActive("index.php")?>" href="index.php"><i class="bi bi-house"></i>Home</a></li>
+                        <li class="nav-item"><a class="nav-link <?php markIfActive("profile.php")?>" href="profile.php"><i class="bi bi-person"></i>Profilo</a></li>
+                        <li class="nav-item"><a class="nav-link <?php markIfActive("new-post.php")?>" href="new-post.php"><i class="bi bi-plus-circle"></i>Nuovo Post</a></li>
+                        <li class="nav-item"><a class="nav-link <?php markIfActive("logout.php")?>" href="logout.php"><i class="bi bi-box-arrow-right"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
 
         <main class="container">

@@ -9,6 +9,12 @@ function isUserLoggedIn() {
     return !empty(getCurrentUserId());
 }
 
+function markIfActive($pagename){
+    if(basename($_SERVER['PHP_SELF'])==$pagename){
+        echo "active";
+    }
+}
+
 function uploadFile($path, $file, $acceptedExtensions, $maxKB = 5000) {
     $fileName = basename($file["name"]);
     $fullPath = $path.$fileName;
