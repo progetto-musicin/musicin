@@ -129,16 +129,16 @@ INSERT INTO `genres` (`id`, `name`) VALUES
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `image`) VALUES
 (1, 'admin', 'admin@admin.com', '', NULL),
-(2, 'user', 'user@user.com', '', NULL),
-(3, 'user1', 'user1@user1.com', '', NULL),
-(4, 'user2', 'user2@user2.com', '', NULL),
-(5, 'user3', 'user3@user3.com', '', NULL);
+(2, 'user2', 'user2@user2.com', '', NULL),
+(3, 'user3', 'user3@user3.com', '', NULL),
+(4, 'user4', 'user4@user4.com', '', NULL),
+(5, 'user5', 'user5@user5.com', '', NULL);
 
 INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `user_id`) VALUES
-(1, 'Post1', 'Content1', '', '', '2024-06-16 13:13:08', 1),
-(2, 'Post2', 'Content2', '', '', '2024-06-16 13:13:23', 1),
-(3, 'Post3', 'Content3', '', '', '2024-06-16 13:51:43', 1),
-(4, 'Post4', 'Content4', '', '', '2024-06-16 13:57:08', 1);
+(1, 'Title1', 'Content1', '', '', '2024-06-16 13:13:08', 1),
+(2, 'Title2', 'Content2', '', '', '2024-06-16 13:13:23', 1),
+(3, 'Title3', 'Content3', '', '', '2024-06-16 13:51:43', 1),
+(4, 'Title4', 'Content4', '', '', '2024-06-16 13:57:08', 1);
 
 INSERT into `follows` (`followed_id`, `follower_id`) VALUES
 (1, 2),
