@@ -16,7 +16,7 @@
 <?php endif; ?>
 </head>
 <body class="bg-light">
-    <div class="container-fluid">
+    <div class="container">
         <header>
             <div class="row">
                 <h1><a href="/">Music.In</a></h1>
@@ -44,15 +44,15 @@
             </ul>
         </nav>
 
-        <main>
+        <main class="container">
             <?php if(isset($templateParams["name"])) { require(__DIR__ . "/" . $templateParams["name"] . ".php"); } ?>
         </main>
 
         <div class="container">
             <footer class="py-3 my-4 border-top">
-            <p class="text-center text-body-secondary">Copyright &copy; 2024 Music.In</p>
-        </footer>
-</div>
+                <p class="text-center text-body-secondary">Copyright &copy; 2024 Music.In</p>
+            </footer>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </div>
