@@ -217,26 +217,28 @@ class DatabaseHelper {
 
     // Funzione privata base per creare una notifica
     private function createNotification($type, $receiver_id, $creator_id, $post_id, $comment_id) {
-        $query = "INSERT INTO notifications (type, receiver_id, creator_id, post_id, comment_id) VALUES (:type, :receiver_id, :creator_id, :post_id, :comment_id)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':type', $type);
-        $stmt->bindParam(':receiver_id', $receiver_id);
-        $stmt->bindParam(':creator_id', $creator_id);
-        $stmt->bindParam(':post_id', $post_id);
-        $stmt->bindParam(':comment_id', $comment_id);
-        return $stmt->execute();
+        if ($creator_id != $receiver_id) {
+            $query = "INSERT INTO notifications (type, receiver_id, creator_id, post_id, comment_id) VALUES (:type, :receiver_id, :creator_id, :post_id, :comment_id)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':type', $type);
+            $stmt->bindParam(':receiver_id', $receiver_id);
+            $stmt->bindParam(':creator_id', $creator_id);
+            $stmt->bindParam(':post_id', $post_id);
+            $stmt->bindParam(':comment_id', $comment_id);
+            $stmt->execute();
+        }
     }
     // Crea una notifica di like per l'utente che ha creato il post
     public function createLikeNotification($creator_id, $post_id) {
         $post = $this->getPostById($post_id);
-        $this->createNotification(NotificationType::LIKE->value, $post["user_id"], $creator_id, $post_id, NULL);
+        $receiver_id = $post["user_id"];
+        $this->createNotification(NotificationType::LIKE->value, $receiver_id, $creator_id, $post_id, NULL);
     }
     // Crea una notifica di commento per l'utente che ha creato il post
     public function createCommentNotification($creator_id, $post_id, $comment_id) {
         $post = $this->getPostById($post_id);
-        if ($creator_id != $post['user_id']) {
-            $this->createNotification(NotificationType::COMMENT->value, $post["user_id"], $creator_id, $post_id, $comment_id);
-        }
+        $receiver_id = $post["user_id"];
+        $this->createNotification(NotificationType::COMMENT->value, $receiver_id, $creator_id, $post_id, $comment_id);
     }
     // Crea una notifica di follow per l'utente che viene seguito
     public function createFollowNotification($followed_id, $follower_id) {
