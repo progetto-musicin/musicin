@@ -43,10 +43,22 @@
                 <div class="px-5 navbar-collapse collapse" id="navbarCollapse">
                     <ul class="nav nav-pills col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0"> -->
-                        <li class="nav-item"><a class="nav-link <?php markIfActive("index.php")?>" href="index.php"><i class="bi bi-house"></i>Home</a></li>
-                        <li class="nav-item"><a class="nav-link <?php markIfActive("profile.php")?>" href="profile.php"><i class="bi bi-person"></i>Profilo</a></li>
-                        <li class="nav-item"><a class="nav-link <?php markIfActive("new-post.php")?>" href="new-post.php"><i class="bi bi-plus-circle"></i>Nuovo Post</a></li>
-                        <li class="nav-item"><a class="nav-link <?php markIfActive("logout.php")?>" href="logout.php"><i class="bi bi-box-arrow-right"></i>Logout</a></li>
+                        <?php
+                        $navlinks = [
+                            ["index.php", "bi-house", "Home"],
+                            ["profile.php", "bi-person", "Profilo"],
+                            ["new-post.php", "bi-plus-circle", "Nuovo Post"],
+                            ["logout.php", "bi-box-arrow-right", "Logout"],
+                        ];
+                        ?>
+                        <?php foreach ($navlinks as $navlink) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link <?php markIfActive($navlink[0]); ?>" href="<?php echo $navlink[0]; ?>">
+                                    <i class="bi <?php echo $navlink[1]; ?>"></i>
+                                    <span class=""><?php echo $navlink[2]; ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
