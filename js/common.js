@@ -7,12 +7,18 @@ function updateNotificationsCounter() {
         let num_notifs = parseInt(this.responseText);
         document.getElementById("notification_counter").innerHTML = num_notifs;
         if (num_notifs > 0) {
-            document.getElementById("notification_counter").style.color = "red";
+            // document.getElementById("notification_counter").style.color = "red";
+            document.getElementById("notification_counter").style.fontWeight = "bold";
+            // document.getElementById("notification_counter").classList.add("text-primary");
+            document.getElementById("notification_counter").classList.add("bg-warning");
             // if (num_notifs > old_num_notifs) {
             //     alert("Hai una nuova notifica");
             // }
         } else {
-            document.getElementById("notification_counter").style.color = "black";
+            // document.getElementById("notification_counter").style.color = "black";
+            document.getElementById("notification_counter").style.fontWeight = "normal";
+            // document.getElementById("notification_counter").classList.remove("text-primary");
+            document.getElementById("notification_counter").classList.remove("bg-warning");
         }
       }
     };

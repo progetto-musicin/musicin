@@ -22,7 +22,7 @@
                 <h1><a href="/">Music.In</a></h1>
                 <div class="container nav nav-pills align-items-center">
                     <a class="nav-link m-1 p-1 <?php markIfActive("notifications.php"); ?>" href="notifications.php"><i class="bi bi-bell"></i><span class="d-none d-md-inline">Notifiche:</span></a>
-                    <span id="notification_counter" class="">0</span>
+                    <span id="notification_counter" class="p-1">0</span>
                     <!-- <span id="notification_counter" class="border border-info px-1 rounded-pill rounded-5">0</span> -->
                     <!-- <span id="notification_counter" class="border border-info p-1">0</span> -->
                     <!-- <span id="notification_counter" class="d-flex justify-content-center align-items-center">0</span> -->
