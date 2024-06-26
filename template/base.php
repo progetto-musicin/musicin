@@ -22,7 +22,7 @@
                 <h1><a href="/">Music.In</a></h1>
                 <div class="column">
                     <a href="notifications.php"><i class="bi bi-bell"></i>Notifiche:</a>
-                    <span id="notification_counter">0</span>
+                    <span id="notification_counter" class="border border-info px-1 rounded-circle">0</span>
                 </div>
             </div>
         </header>
