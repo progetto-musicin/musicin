@@ -19,7 +19,7 @@
     <div class="container">
         <header>
             <div class="container d-flex">
-                <h1><a href="/">Music.In</a></h1>
+                <h1><a class="navbar-brand" href="/">Music.In</a></h1>
                 <div class="container nav nav-pills align-items-center justify-content-end">
                     <a class="nav-link m-1 p-1 <?php markIfActive("notifications.php"); ?>" href="notifications.php"><i class="bi bi-bell"></i><span class="d-none d-sm-inline ms-1">Notifiche:</span></a>
                     <span id="notification_counter" class="p-1">0</span>
