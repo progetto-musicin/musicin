@@ -19,7 +19,7 @@
     <div class="container-fluid">
         <header>
             <div class="row">
-                <h1>Music.In</h1>
+                <h1><a href="/">Music.In</a></h1>
                 <div class="column">
                     <a href="notifications.php"><i class="bi bi-bell"></i>Notifiche:</a>
                     <span id="notification_counter">0</span>
