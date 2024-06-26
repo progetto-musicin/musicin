@@ -48,6 +48,14 @@
                 : <span class="like-count"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
             </li>
             <li><a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>"><i class="bi bi-chat"></i> Commenti</a></li>
+<?php if ($user_id == $post['user_id']): ?>
+            <li>
+                <form action="php/processa-delete-post.php" method="post">
+                    <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($post['id']); ?>">
+                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i>Elimina Post</button>
+                </form>
+            </li>
+<?php endif; ?>
         </ul>
     </footer>
 </article>

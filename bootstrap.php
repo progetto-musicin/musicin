@@ -26,4 +26,6 @@ if (!isUserLoggedIn() && (!in_array(basename($_SERVER['PHP_SELF']), $pagesWithou
 
 require_once(__DIR__ . "/db/connessione-db.php");
 
+$user_id = getCurrentUserId();
+
 ?>

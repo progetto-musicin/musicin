@@ -169,6 +169,66 @@ class DatabaseHelper {
         return $result;
     }
 
+    public function deletePost($user_id, $post_id) {
+        if ($user_id != $this->getPostById($post_id)["user_id"]) {
+            return false;
+        }
+
+        $this->conn->beginTransaction();
+
+        $query_likes = "DELETE FROM likes WHERE post_id = :post_id";
+        $stmt_likes = $this->conn->prepare($query_likes);
+        $stmt_likes->bindParam(':post_id', $post_id);
+        $res_likes = $stmt_likes->execute();
+
+        $query_notifications_comments = "DELETE FROM notifications WHERE comment_id IN (SELECT id FROM comments WHERE post_id = :post_id)";
+        $stmt_notifications_comments = $this->conn->prepare($query_notifications_comments);
+        $stmt_notifications_comments->bindParam(':post_id', $post_id);
+        $res_notifications_comments = $stmt_notifications_comments->execute();
+
+        $query_comments = "DELETE FROM comments WHERE post_id = :post_id";
+        $stmt_comments = $this->conn->prepare($query_comments);
+        $stmt_comments->bindParam(':post_id', $post_id);
+        $res_comments = $stmt_comments->execute();
+
+        $query_notifications_post = "DELETE FROM notifications WHERE post_id = :post_id";
+        $stmt_notifications_post = $this->conn->prepare($query_notifications_post);
+        $stmt_notifications_post->bindParam(':post_id', $post_id);
+        $res_notifications_post = $stmt_notifications_post->execute();
+
+        $query = "DELETE FROM posts WHERE id = :post_id AND user_id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':post_id', $post_id);
+        $stmt->bindParam(':user_id', $user_id);
+        $res_posts = $stmt->execute();
+
+        if (!$res_likes || !$res_notifications_comments || !$res_comments || !$res_notifications_post || !$res_posts) {
+            $this->conn->rollBack();
+            return false;
+        }
+        $this->conn->commit();
+        return true;
+    }
+
+    public function deleteComment($user_id, $comment_id) {
+        if ($user_id != $this->getCommentById($comment_id)["user_id"]) {
+            return false;
+        }
+        $query = "DELETE FROM comments WHERE id = :comment_id AND user_id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':comment_id', $comment_id);
+        $stmt->bindParam(':user_id', $user_id);
+        return $stmt->execute();
+    }
+
+    public function getCommentById($comment_id) {
+        $query = "SELECT id, content, created_at, user_id, post_id FROM comments WHERE id = :comment_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':comment_id', $comment_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getCommentsByPostId($post_id) {
         $query = "SELECT id, content, created_at, user_id, post_id FROM comments WHERE post_id = :post_id ORDER BY created_at DESC";
         $stmt = $this->conn->prepare($query);
