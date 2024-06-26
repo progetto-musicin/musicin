@@ -2,8 +2,7 @@ $(document).ready(function() {
     $('.like-button').off('click').on('click', function() { // https://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
         var postId = $(this).data('post-id');
         var likeCountElement = $(this).siblings('.like-count');
-        var likeButton = $(this);
-
+        
         $.ajax({
             type: 'POST',
             url: 'php/processa-like.php',
@@ -12,10 +11,10 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.success) {
                     likeCountElement.text(response.newLikeCount);
-                    if (response.liked) {
-                        likeButton.addClass('liked');
+                    if (response.isLiked) {
+                        $('.like-button').addClass('liked'); 
                     } else {
-                        likeButton.removeClass('liked');
+                        $('.like-button').removeClass('liked');
                     }
                 } else {
                     console.error(response.message);

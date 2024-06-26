@@ -42,10 +42,11 @@
     <footer>
         <ul>
             <li>
-                <button class="like-button" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
-                    <i class="bi bi-hand-thumbs-up"></i> Mi piace
-                </button>
-                : <span class="like-count"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
+            <button class="like-button" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
+        <i class="bi bi-hand-thumbs-up"></i> Mi piace
+            </button>
+<span class="like-count"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
+
             </li>
             <li><a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>"><i class="bi bi-chat"></i> Commenti</a></li>
 <?php if ($user_id == $post['user_id']): ?>
@@ -60,7 +61,6 @@
     </footer>
 </article>
 
-<!-- Include jQuery -->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Include il tuo file like.js -->
 <script src="js/like.js"></script>

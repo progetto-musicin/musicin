@@ -14,6 +14,8 @@
 <?php if (!empty($templateParams["js"])): ?>
     <script src='js/<?php echo $templateParams["js"]; ?>.js'></script>
 <?php endif; ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/like.js"></script>
 </head>
 <body class="bg-light">
     <div class="container">
