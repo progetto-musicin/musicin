@@ -1,10 +1,9 @@
-// File: js/like.js
-
 $(document).ready(function() {
     $('.like-button').click(function() {
         var postId = $(this).data('post-id');
         var likeCountElement = $(this).siblings('.like-count');
-        
+        var likeButton = $(this);
+
         $.ajax({
             type: 'POST',
             url: 'php/processa-like.php',
@@ -13,6 +12,11 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.success) {
                     likeCountElement.text(response.newLikeCount);
+                    if (response.liked) {
+                        likeButton.addClass('liked');
+                    } else {
+                        likeButton.removeClass('liked');
+                    }
                 } else {
                     console.error(response.message);
                 }
