@@ -40,10 +40,11 @@
                     <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="px-5 navbar-collapse collapse" id="navbarCollapse">
+                </button> -->
+                <!-- <div class="px-5 navbar-collapse collapse" id="navbarCollapse"> -->
+                <div class="px-5 navbar-collapse" id="navbarCollapse">
                     <ul class="nav nav-pills col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0"> -->
                         <?php
@@ -58,7 +59,7 @@
                             <li class="nav-item">
                                 <a class="nav-link <?php markIfActive($navlink[0]); ?>" href="<?php echo $navlink[0]; ?>">
                                     <i class="bi <?php echo $navlink[1]; ?>"></i>
-                                    <span class=""><?php echo $navlink[2]; ?></span>
+                                    <span class="d-none d-md-inline"><?php echo $navlink[2]; ?></span>
                                 </a>
                             </li>
                         <?php endforeach; ?>
