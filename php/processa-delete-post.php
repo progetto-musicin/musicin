@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $dbh->deletePost($user_id, $post_id);
 
         if ($result) {
-            header("Location: " . "/index.php");
+            header("Location: " . "/profile.php");
             exit();
         } else {
             die("Si è verificato un errore durante l'eliminazione del post.");
