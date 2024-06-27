@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/like.js"></script>
 </head>
-<body class="bg-light">
+<body class="bg-light d-flex flex-column h-100">
 
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container justify-content-center border-bottom">
@@ -69,13 +69,13 @@
         </div>
     </nav>
 
-    <main>
+    <main class="flex-shrink-0">
         <div class="container">
             <?php if(isset($templateParams["name"])) { require(__DIR__ . "/" . $templateParams["name"] . ".php"); } ?>
         </div>
     </main>
 
-    <footer class="py-3 my-4">
+    <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container border-top">
             <p class="text-center text-body-secondary">Copyright &copy; 2024 Music.In</p>
         </div>
