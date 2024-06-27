@@ -27,8 +27,8 @@ function uploadFile($path, $file, $acceptedExtensions, $maxKB = 5000) {
     }
 
     //Controllo estensione del file
+    $fileType = strtolower(pathinfo($fullPath,PATHINFO_EXTENSION));
     if (!empty($acceptedExtensions)) {
-        $fileType = strtolower(pathinfo($fullPath,PATHINFO_EXTENSION));
         if (!in_array($fileType, $acceptedExtensions)) {
             $msg .= "Accettate solo le seguenti estensioni: ".implode(",", $acceptedExtensions);
         }
