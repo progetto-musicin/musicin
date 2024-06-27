@@ -13,8 +13,8 @@
             <input class="form-control" type="file" id="image" name="image">
         </div>
         
-        <?php if ($user['image']): ?>
-            <img src="<?php echo UPLOAD_DIR . htmlspecialchars($user['image']); ?>" alt="Immagine Profilo" style="width: 100px; height: auto;"><br>
+        <?php if ($user['profile_image']): ?>
+            <img src="<?php echo UPLOAD_DIR . htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo" style="width: 100px; height: auto;"><br>
         <?php endif; ?>
 
         <!-- Selezione del genere musicale preferito -->
