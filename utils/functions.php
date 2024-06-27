@@ -48,6 +48,7 @@ function uploadFile($path, $file, $acceptedExtensions, $maxKB = 5000) {
     if (strlen($msg)==0) {
         if (!move_uploaded_file($file["tmp_name"], $fullPath)) {
             $msg.= "Errore nel caricamento dell'immagine.";
+            $msg.= "Verificare permessi cartella (" . $path . "). Attuali: (OCT) " . decoct(fileperms($path));
         } else{
             $result = 1;
             $msg = $fileName;
