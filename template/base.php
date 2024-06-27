@@ -19,8 +19,8 @@
 </head>
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top border-bottom">
-        <div class="container justify-content-center">
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container justify-content-center border-bottom">
             <div class="col-12">
                 <div class="d-flex">
                     <h1><a class="navbar-brand" href="/">Music.In</a></h1>
@@ -74,8 +74,8 @@
         </div>
     </main>
 
-    <footer class="py-3 my-4 border-top">
-        <div class="container">
+    <footer class="py-3 my-4">
+        <div class="container border-top">
             <p class="text-center text-body-secondary">Copyright &copy; 2024 Music.In</p>
         </div>
     </footer>

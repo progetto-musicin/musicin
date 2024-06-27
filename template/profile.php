@@ -1,7 +1,7 @@
 <?php if (empty($user)): ?>
     <h2>Utente non trovato.</h2>
 <?php else: ?>
-<section>
+<section class="border-bottom">
     <h2><?php echo htmlspecialchars($user['username']); ?></h2>
 
     <!-- Immagine Profilo -->
