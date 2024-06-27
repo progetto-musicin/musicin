@@ -18,22 +18,20 @@
     <script src="js/like.js"></script>
 </head>
 <body class="bg-light">
-    <div class="container">
-        <header>
-            <div class="container d-flex">
-                <h1><a class="navbar-brand" href="/">Music.In</a></h1>
-                <div class="container nav nav-pills align-items-center justify-content-end">
-                    <a class="nav-link m-1 p-1 <?php markIfActive("notifications.php"); ?>" href="notifications.php"><i class="bi bi-bell"></i><span class="d-none d-sm-inline ms-1">Notifiche:</span></a>
-                    <span id="notification_counter" class="p-1">0</span>
-                    <!-- <span id="notification_counter" class="border border-info px-1 rounded-pill rounded-5">0</span> -->
-                    <!-- <span id="notification_counter" class="border border-info p-1">0</span> -->
-                    <!-- <span id="notification_counter" class="d-flex justify-content-center align-items-center">0</span> -->
-                </div>
-            </div>
-        </header>
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top border-bottom">
+        <div class="container justify-content-center">
+            <div class="col-12">
+                <div class="d-flex">
+                    <h1><a class="navbar-brand" href="/">Music.In</a></h1>
+                    <div class="container nav nav-pills align-items-center justify-content-end">
+                        <a class="nav-link m-1 p-1 <?php markIfActive("notifications.php"); ?>" href="notifications.php"><i class="bi bi-bell"></i><span class="d-none d-sm-inline ms-1">Notifiche:</span></a>
+                        <span id="notification_counter" class="p-1">0</span>
+                        <!-- <span id="notification_counter" class="border border-info px-1 rounded-pill rounded-5">0</span> -->
+                        <!-- <span id="notification_counter" class="border border-info p-1">0</span> -->
+                        <!-- <span id="notification_counter" class="d-flex justify-content-center align-items-center">0</span> -->
+                    </div>
+                </div>
                 <form class="d-flex" role="search" action="search.php" method="get">
                     <select class="form-select me-2" name="search_type" aria-label="Tipo di ricerca">
                         <option value="username">Username</option>
@@ -67,19 +65,21 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-
-        <main class="container">
-            <?php if(isset($templateParams["name"])) { require(__DIR__ . "/" . $templateParams["name"] . ".php"); } ?>
-        </main>
-
-        <div class="container">
-            <footer class="py-3 my-4 border-top">
-                <p class="text-center text-body-secondary">Copyright &copy; 2024 Music.In</p>
-            </footer>
         </div>
+    </nav>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </div>
+    <main>
+        <div class="container">
+            <?php if(isset($templateParams["name"])) { require(__DIR__ . "/" . $templateParams["name"] . ".php"); } ?>
+        </div>
+    </main>
+
+    <footer class="py-3 my-4 border-top">
+        <div class="container">
+            <p class="text-center text-body-secondary">Copyright &copy; 2024 Music.In</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
