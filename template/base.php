@@ -30,7 +30,7 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
                 <div class="d-flex">
                     <h1><a class="navbar-brand" href="/">Music.In</a></h1>
                     <div class="container nav nav-pills align-items-center justify-content-end">
-                        <a class="nav-link" href="/profile.php">
+                        <a class="nav-link" href="profile.php">
                             <?php if (!empty($profile_image)): ?>
                                 <img style="height: 30pt; width: 30pt;" class="img-thumbnail rounded-circle" src="<?php echo UPLOAD_DIR . htmlspecialchars($profile_image); ?>" alt="Immagine Profilo">
                             <?php else: ?>

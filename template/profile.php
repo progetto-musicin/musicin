@@ -11,8 +11,8 @@
 
     <!-- Numero di Follower e Seguiti -->
     <ul>
-        <li><a href="/followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
-        <li><a href="/following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
+        <li><a href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
+        <li><a href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
     </ul>
 
 <?php if ($isMyProfile): ?>
