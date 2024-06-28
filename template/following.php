@@ -3,7 +3,7 @@
     <?php foreach ($following as $followed): ?>
         <?php $followed_info = $dbh->getUserInfo($followed['followed_id']); ?>
         <li>
-            <img src="<?php echo htmlspecialchars($followed_info['profile_image']); ?>" alt="Immagine Profilo" style="width: 50px; height: auto;">
+            <img src="<?php echo UPLOAD_DIR . htmlspecialchars($followed_info['profile_image']); ?>" alt="Immagine Profilo" style="width: 50px; height: auto;">
             <?php echo htmlspecialchars($followed_info['username']); ?>
             <form method="post">
                 <input type="hidden" name="followed_id" value="<?php echo htmlspecialchars($followed['followed_id']); ?>">
