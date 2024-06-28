@@ -19,13 +19,23 @@
 </head>
 <body class="bg-light d-flex flex-column h-100">
 
+<?php
+$username = $dbh->getUserInfo(getCurrentUserId())['username'];
+$profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
+?>
+
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container justify-content-center border-bottom">
             <div class="col-12">
                 <div class="d-flex">
                     <h1><a class="navbar-brand" href="/">Music.In</a></h1>
                     <div class="container nav nav-pills align-items-center justify-content-end">
-                        <a class="nav-link m-1 p-1 <?php markIfActive("notifications.php"); ?>" href="notifications.php"><i class="bi bi-bell"></i><span class="d-none d-sm-inline ms-1">Notifiche:</span></a>
+                        <a class="nav-link" href="/profile.php">
+<?php if (!empty($profile_image)): ?>
+                        <img style="height: 30pt; width: 30pt;" class="img-thumbnail rounded-circle" src="<?php echo UPLOAD_DIR . htmlspecialchars($profile_image); ?>" alt="Immagine Profilo">
+<?php endif; ?>
+                        <span class="d-none d-sm-inline align-middle"><?php echo htmlspecialchars($username); ?></span></a>
+                        <a class="nav-link <?php markIfActive("notifications.php"); ?>" href="notifications.php"><i class="bi bi-bell"></i><span class="d-none d-sm-inline ms-1 align-middle">Notifiche:</span></a>
                         <span id="notification_counter" class="p-1">0</span>
                         <!-- <span id="notification_counter" class="border border-info px-1 rounded-pill rounded-5">0</span> -->
                         <!-- <span id="notification_counter" class="border border-info p-1">0</span> -->
