@@ -168,5 +168,35 @@ INSERT into `usergenres` (`genre_id`, `user_id`) VALUES
 (1, 2),
 (2, 2),
 (3, 2);
+/*
+-- utenti di test
+INSERT INTO users (username, email, name, surname, profile_image) VALUES ('user1', 'user1@example.com', 'User', 'One', '');
+INSERT INTO users (username, email, name, surname, profile_image) VALUES ('user2', 'user2@example.com', 'User', 'Two', '');
+INSERT INTO users (username, email, name, surname, profile_image) VALUES ('user3', 'user3@example.com', 'User', 'Three', '');
 
+-- relazioni di follow di test
+INSERT INTO follows (follower_id, followed_id) VALUES (1, 2);
+INSERT INTO follows (follower_id, followed_id) VALUES (1, 3);
+INSERT INTO follows (follower_id, followed_id) VALUES (2, 1);
+
+-- test users
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    surname VARCHAR(255) NOT NULL,
+    profile_image VARCHAR(255)
+);
+
+-- test follows
+CREATE TABLE IF NOT EXISTS follows (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    follower_id INT NOT NULL,
+    followed_id INT NOT NULL,
+    FOREIGN KEY (follower_id) REFERENCES users(id),
+    FOREIGN KEY (followed_id) REFERENCES users(id)
+);
+
+*/
 COMMIT;

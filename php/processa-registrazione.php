@@ -4,7 +4,7 @@ require_once __DIR__ . '/../db/connessione-db.php';
 // Verifica se il form è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); //salatura della password
     $email = $_POST['email'];
 
     // Verifica se l'username o l'email sono già registrati

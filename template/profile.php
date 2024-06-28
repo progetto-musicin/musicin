@@ -1,16 +1,14 @@
 <?php
-
 session_start();
-require_once 'db/dbhelper.php';
+//$_SESSION['user_id'] = 1; // Imposta temporaneamente l'ID utente su 1 (admin)
+require_once __DIR__ . '/../db/dbhelper.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-
 $user_id = $_SESSION['user_id'];
-
 
 $dbh = new DatabaseHelper('localhost', 'root', '', 'music_in', '3306');
 $user = $dbh->getUserInfo($user_id);
@@ -22,10 +20,11 @@ if (!$genres) {
     echo "Errore nel recupero dei generi musicali.";
     exit();
 }
+
+// Recupera il numero di follower e di seguiti
+$numFollowers = $dbh->getNumFollowers($user_id);
+$numFollowing = $dbh->getNumFollowing($user_id);
 ?>
-
-
-
 
 <?php if (empty($user)): ?>
     <h2>Utente non trovato.</h2>
@@ -41,9 +40,10 @@ if (!$genres) {
 
             <!-- Numero di Follower e Seguiti -->
             <ul>
-                <li><a href="#">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
-                <li><a href="#">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
+                <li><a href="template/followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($numFollowers); ?></a></li>
+                <li><a href="template/following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($numFollowing); ?></a></li>
             </ul>
+
         </header>
     </article>
 </section>
@@ -58,8 +58,8 @@ if (!$genres) {
 
     <label for="image">Immagine Profilo:</label>
     <input type="file" id="image" name="image"><br>
-    <?php if ($user['image']): ?>
-        <img src="<?php echo htmlspecialchars($user['image']); ?>" alt="Immagine Profilo" style="width: 100px; height: auto;"><br>
+    <?php if ($user['profile_image']): ?>
+        <img src="<?php echo htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo" style="width: 100px; height: auto;"><br>
     <?php endif; ?>
 
     <!-- Selezione del genere musicale preferito -->
@@ -75,8 +75,10 @@ if (!$genres) {
 
 <!-- Visualizzazione dei post -->
 <section class="post-grid">
-    <?php foreach ($posts as $post): ?>
-        <?php require __DIR__ . "/post.php" ?>
+    <?php
+    $posts = $dbh->getUserPosts($user_id);
+    foreach ($posts as $post): ?>
+        <?php require __DIR__ . "/post.php"; ?>
     <?php endforeach; ?>
 </section>
 <?php endif; ?>
