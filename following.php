@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$templateParams["title"] = "Music.In - Seguiti";
+$templateParams["title"] = "Music.In - Seguiti di " . htmlspecialchars($dbh->getUserInfo($profile_user_id)['username']);
 $templateParams["name"] = "following";
 require __DIR__ . '/template/base.php';
 
