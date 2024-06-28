@@ -5,7 +5,8 @@
 START TRANSACTION;
 -- SET time_zone = "+00:00";
 
-create database `music_in`;
+drop database if exists `music_in`;
+create database `music_in` DEFAULT CHARACTER SET utf8;
 use `music_in`;
 -- CREATE SCHEMA IF NOT EXISTS `music_in` DEFAULT CHARACTER SET utf8 ;
 -- USE `music_in` ;
@@ -15,7 +16,7 @@ use `music_in`;
 
 create table comments (
      `id` int not null AUTO_INCREMENT,
-     `content` varchar(255) not null,
+     `content` varchar(16383) not null,
      `created_at` timestamp not null DEFAULT current_timestamp(),
      `user_id` int not null,
      `post_id` int not null,
@@ -45,7 +46,7 @@ create table notifications (
 create table posts (
      `id` int not null AUTO_INCREMENT,
      `title` varchar(255) not null,
-     `content` varchar(255) not null,
+     `content` varchar(16383) not null,
      `image` varchar(255),
      `song` varchar(255),
      `created_at` timestamp not null DEFAULT current_timestamp(),
@@ -113,6 +114,8 @@ alter table `users`
 
 -- Data
 
+-- Some values might reuse the same file for demonstration purposes and to save disk space, the actual upload function does not overwrite files.
+
 use `music_in`;
 
 INSERT INTO `genres` (`id`, `name`) VALUES
@@ -128,8 +131,8 @@ INSERT INTO `genres` (`id`, `name`) VALUES
 (10, 'House');
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `image`) VALUES
-(1, 'admin', 'admin@admin.com', '', NULL),
-(2, 'user2', 'user2@user2.com', '', NULL),
+(1, 'admin', 'admin@admin.com', '', 'accessibility.jpg'),
+(2, 'user2', 'user2@user2.com', '', 'bootstrap-logo-shadow.png'),
 (3, 'user3', 'user3@user3.com', '', NULL),
 (4, 'user4', 'user4@user4.com', '', NULL),
 (5, 'user5', 'user5@user5.com', '', NULL);
@@ -139,6 +142,10 @@ INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `u
 (2, 'Title2', 'Content2', '', '', '2024-06-16 13:13:23', 1),
 (3, 'Title3', 'Content3', '', '', '2024-06-16 13:51:43', 1),
 (4, 'Title4', 'Content4', '', '', '2024-06-16 13:57:08', 1);
+
+INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `user_id`) VALUES
+(NULL, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis auctor justo vel tempus. Ut ligula ex, porttitor ut finibus eget, viverra et nunc. Nunc euismod semper tellus eget pellentesque. Quisque vitae mattis dolor, ac imperdiet odio. Quisque dictum consectetur volutpat. Quisque non venenatis ante. Mauris tristique fringilla purus ultricies bibendum. Nam ut pretium mauris. Maecenas sagittis tempor condimentum.\r\n\r\nMauris vel arcu tempor, ornare dolor et, tristique magna. Sed at lacinia leo. Nunc ac sem eget nisl tempus fermentum. Nam et quam finibus, pellentesque metus nec, porttitor ante. Fusce sit amet interdum ligula. Sed sodales scelerisque ligula. Proin auctor leo nec odio fringilla molestie. Phasellus interdum, dui et mollis venenatis, augue tellus tempor turpis, eget tempus lorem nibh in nunc. Fusce quis nibh nec risus vestibulum fermentum. ', 'php.png', 'titanium-170190.mp3', '2024-06-28 12:22:44', '1'),
+(NULL, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis auctor justo vel tempus. Ut ligula ex, porttitor ut finibus eget, viverra et nunc. Nunc euismod semper tellus eget pellentesque. Quisque vitae mattis dolor, ac imperdiet odio. Quisque dictum consectetur volutpat. Quisque non venenatis ante. Mauris tristique fringilla purus ultricies bibendum. Nam ut pretium mauris. Maecenas sagittis tempor condimentum.\r\n\r\nMauris vel arcu tempor, ornare dolor et, tristique magna. Sed at lacinia leo. Nunc ac sem eget nisl tempus fermentum. Nam et quam finibus, pellentesque metus nec, porttitor ante. Fusce sit amet interdum ligula. Sed sodales scelerisque ligula. Proin auctor leo nec odio fringilla molestie. Phasellus interdum, dui et mollis venenatis, augue tellus tempor turpis, eget tempus lorem nibh in nunc. Fusce quis nibh nec risus vestibulum fermentum. ', 'html5-js-css3.png', 'titanium-170190.mp3', '2024-06-28 12:22:44', '2');
 
 INSERT into `follows` (`followed_id`, `follower_id`) VALUES
 (1, 2),
