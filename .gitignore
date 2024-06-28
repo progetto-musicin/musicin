@@ -1,4 +1,12 @@
 
+# Ignore uploaded files
 /upload/*
+# Except these for development purposes
 !/upload/.gitignore
 !/upload/.gitkeep
+# Except these for demonstration purposes
+!/upload/accessibility.jpg
+!/upload/bootstrap-logo-shadow.png
+!/upload/html5-js-css3.png
+!/upload/php.png
+!/upload/titanium-170190.mp3
