@@ -299,5 +299,20 @@ class DatabaseHelper {
         $stmt->bindParam(':notification_id', $notification_id);
         return $stmt->execute();
     }
+
+    public function deleteComment($comment_id) {
+        $query = "DELETE FROM comments WHERE id = :comment_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':comment_id', $comment_id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+    
+    public function getCommentById($comment_id) {
+        $query = "SELECT * FROM comments WHERE id = :comment_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':comment_id', $comment_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>
