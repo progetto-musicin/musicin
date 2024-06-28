@@ -23,8 +23,11 @@
 <?php endif; ?>
     </header>
     <div>
-        <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
-        
+        <!-- Immagine post -->
+        <?php if (!empty($post['image'])): ?>
+            <img class="img-fluid" src="<?php echo UPLOAD_DIR . htmlspecialchars($post['image']); ?>" alt="Immagine del post">
+        <?php endif; ?>
+
         <!-- Player audio -->
         <?php if (!empty($post['song'])): ?>
             <audio controls>
@@ -33,10 +36,7 @@
             </audio>
         <?php endif; ?>
 
-        <!-- Immagine post -->
-        <?php if (!empty($post['image'])): ?>
-            <img class="img-fluid" src="<?php echo UPLOAD_DIR . htmlspecialchars($post['image']); ?>" alt="Immagine del post">
-        <?php endif; ?>
+        <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
     </div>
 
     <footer>
