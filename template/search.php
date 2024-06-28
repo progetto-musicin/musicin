@@ -34,7 +34,7 @@ if (!empty($searchTerm)) {
 
 <?php foreach ($users as $user): ?>
     <div>
-        <a href="profile.php?user_id=<?php echo $user['id']; ?>">
+        <a href="profile.php?id=<?php echo $user['id']; ?>">
             Username: <?php echo htmlspecialchars($user['username']); ?><br>
         </a>
         Numero di follower: <?php echo $user['followers_count']; ?><br>
