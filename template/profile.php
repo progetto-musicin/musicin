@@ -5,7 +5,9 @@
     <h2><?php echo htmlspecialchars($user['username']); ?></h2>
 
     <!-- Immagine Profilo -->
+<?php if (!empty($user['profile_image'])): ?>
     <img src="<?php echo UPLOAD_DIR . htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo">
+<?php endif; ?>
 
     <!-- Numero di Follower e Seguiti -->
     <ul>
@@ -32,8 +34,12 @@
 <!-- Visualizzazione dei post -->
 <section class="post-grid">
     <h2>Post</h2>
+<?php if (empty($posts)): ?>
+    <p>Nessun post disponibile.</p>
+<?php else: ?>
     <?php foreach ($posts as $post): ?>
         <?php require __DIR__ . "/post.php" ?>
     <?php endforeach; ?>
+<?php endif; ?>
 </section>
 <?php endif; ?>

@@ -23,7 +23,7 @@
 <?php endif; ?>
     </header>
     <div>
-        <p><?php echo htmlspecialchars($post['content']); ?></p>
+        <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
         
         <!-- Player audio -->
         <?php if (!empty($post['song'])): ?>
