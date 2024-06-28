@@ -35,7 +35,7 @@
 
         <!-- Immagine post -->
         <?php if (!empty($post['image'])): ?>
-            <img src="<?php echo UPLOAD_DIR . htmlspecialchars($post['image']); ?>" alt="Immagine del post">
+            <img class="img-fluid" src="<?php echo UPLOAD_DIR . htmlspecialchars($post['image']); ?>" alt="Immagine del post">
         <?php endif; ?>
     </div>
 
