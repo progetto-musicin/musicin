@@ -24,6 +24,13 @@ $username = $dbh->getUserInfo(getCurrentUserId())['username'];
 $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
 ?>
 
+    <div class ="position-fixed bottom-0 end-0 mb-3 me-3">
+        <button class="btn btn-bd-primary py-2" onclick="topFunction()" id="scrollToTopBtn" title="Vai all'inizio della pagina">
+            <i class="bi bi-arrow-up-circle"></i>
+            <span class="visually-hidden">Vai all'inizio della pagina</span>
+        </button>
+    </div>
+
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container justify-content-center border-bottom">
             <div class="col-12">
