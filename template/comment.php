@@ -1,5 +1,6 @@
-<article id="comment-<?php echo $comment['id']; ?>">
+<article class="card card-body" id="comment-<?php echo $comment['id']; ?>">
     <p><?php echo nl2br(htmlspecialchars($comment['content'])); ?></p>
+    <p><small class="text-muted">Creato da: <a href="/profile.php?id=<?php echo $comment["user_id"] ?>"><?php echo htmlspecialchars($dbh->getUserInfo($comment['user_id'])['username']); ?></a> alle: <?php echo htmlspecialchars($comment['created_at']); ?></small></p>
 <?php if ($user_id == $comment['user_id']): ?>
     <!-- Elimina Commento Button trigger modal -->
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaCommento<?php echo $comment['id']; ?>Modal">
@@ -29,5 +30,4 @@
         </div>
     </div>
 <?php endif; ?>
-    <p><small class="text-muted">Creato da: <a href="/profile.php?id=<?php echo $comment["user_id"] ?>"><?php echo htmlspecialchars($dbh->getUserInfo($comment['user_id'])['username']); ?></a> alle: <?php echo htmlspecialchars($comment['created_at']); ?></small></p>
 </article>

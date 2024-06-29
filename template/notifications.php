@@ -5,10 +5,14 @@
     <?php else : ?>
         <ul class="list-group">
             <?php foreach ($notifications as $notification) : ?>
-                <li class="list-group-item <?php if (!$notification["was_read"]) { echo 'fw-bold';} ?>">
-                    <?php /* <p><?php echo htmlspecialchars(($notification['created_at'])); ?></p> */ ?>
-                    <p class=""><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d/m/Y H:i:s')); ?></p>
-                    <?php /* <p><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d F Y H:i:s')); ?></p> */ ?>
+                <li class="container card card-body list-group-item <?php if (!$notification["was_read"]) { echo 'fw-bold';} ?>">
+                    <div class="row">
+                        <p class="col-10"><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d/m/Y H:i:s')); ?></p>
+                        <form class="col-2 text-end" action="php/processa-delete-notification.php" method="post">
+                            <input type="hidden" name="notification_id" value="<?php echo htmlspecialchars($notification['notification_id']); ?>">
+                            <button type="submit" class="btn btn-danger text-nowrap"><i class="bi bi-trash"></i><span class="d-none">Elimina notifica</span></button>
+                        </form>
+                    </div>
                     <p class="">
                         <?php switch ($notification['type']):
                         case NotificationType::LIKE->value: ?>
@@ -29,10 +33,6 @@
                             <a href="profile.php?id=<?php echo htmlspecialchars($notification['creator_id']); ?>"><?php echo htmlspecialchars($dbh->getUserInfo($notification['creator_id'])['username']); ?></a> ha pubblicato un nuovo <a href="comments.php?post_id=<?php echo htmlspecialchars($notification['post_id']); ?>">post</a>.
                         <?php break; ?>
                         <?php endswitch; ?>
-                        <form action="php/processa-delete-notification.php" method="post">
-                            <input type="hidden" name="notification_id" value="<?php echo htmlspecialchars($notification['notification_id']); ?>">
-                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </form>
                     </p>
                 </li>
                 <?php $dbh->setNotificationRead($notification["notification_id"]); ?>
