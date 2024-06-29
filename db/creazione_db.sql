@@ -144,8 +144,8 @@ INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `u
 (4, 'Title4', 'Content4', '', '', '2024-06-16 13:57:08', 1);
 
 INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `user_id`) VALUES
-(NULL, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis auctor justo vel tempus. Ut ligula ex, porttitor ut finibus eget, viverra et nunc. Nunc euismod semper tellus eget pellentesque. Quisque vitae mattis dolor, ac imperdiet odio. Quisque dictum consectetur volutpat. Quisque non venenatis ante. Mauris tristique fringilla purus ultricies bibendum. Nam ut pretium mauris. Maecenas sagittis tempor condimentum.\r\n\r\nMauris vel arcu tempor, ornare dolor et, tristique magna. Sed at lacinia leo. Nunc ac sem eget nisl tempus fermentum. Nam et quam finibus, pellentesque metus nec, porttitor ante. Fusce sit amet interdum ligula. Sed sodales scelerisque ligula. Proin auctor leo nec odio fringilla molestie. Phasellus interdum, dui et mollis venenatis, augue tellus tempor turpis, eget tempus lorem nibh in nunc. Fusce quis nibh nec risus vestibulum fermentum. ', 'php.png', 'titanium-170190.mp3', '2024-06-28 12:22:44', '1'),
-(NULL, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis auctor justo vel tempus. Ut ligula ex, porttitor ut finibus eget, viverra et nunc. Nunc euismod semper tellus eget pellentesque. Quisque vitae mattis dolor, ac imperdiet odio. Quisque dictum consectetur volutpat. Quisque non venenatis ante. Mauris tristique fringilla purus ultricies bibendum. Nam ut pretium mauris. Maecenas sagittis tempor condimentum.\r\n\r\nMauris vel arcu tempor, ornare dolor et, tristique magna. Sed at lacinia leo. Nunc ac sem eget nisl tempus fermentum. Nam et quam finibus, pellentesque metus nec, porttitor ante. Fusce sit amet interdum ligula. Sed sodales scelerisque ligula. Proin auctor leo nec odio fringilla molestie. Phasellus interdum, dui et mollis venenatis, augue tellus tempor turpis, eget tempus lorem nibh in nunc. Fusce quis nibh nec risus vestibulum fermentum. ', 'html5-js-css3.png', 'titanium-170190.mp3', '2024-06-28 12:22:44', '2');
+(5, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis auctor justo vel tempus. Ut ligula ex, porttitor ut finibus eget, viverra et nunc. Nunc euismod semper tellus eget pellentesque. Quisque vitae mattis dolor, ac imperdiet odio. Quisque dictum consectetur volutpat. Quisque non venenatis ante. Mauris tristique fringilla purus ultricies bibendum. Nam ut pretium mauris. Maecenas sagittis tempor condimentum.\r\n\r\nMauris vel arcu tempor, ornare dolor et, tristique magna. Sed at lacinia leo. Nunc ac sem eget nisl tempus fermentum. Nam et quam finibus, pellentesque metus nec, porttitor ante. Fusce sit amet interdum ligula. Sed sodales scelerisque ligula. Proin auctor leo nec odio fringilla molestie. Phasellus interdum, dui et mollis venenatis, augue tellus tempor turpis, eget tempus lorem nibh in nunc. Fusce quis nibh nec risus vestibulum fermentum. ', 'php.png', 'titanium-170190.mp3', '2024-06-28 12:22:44', '1'),
+(6, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis auctor justo vel tempus. Ut ligula ex, porttitor ut finibus eget, viverra et nunc. Nunc euismod semper tellus eget pellentesque. Quisque vitae mattis dolor, ac imperdiet odio. Quisque dictum consectetur volutpat. Quisque non venenatis ante. Mauris tristique fringilla purus ultricies bibendum. Nam ut pretium mauris. Maecenas sagittis tempor condimentum.\r\n\r\nMauris vel arcu tempor, ornare dolor et, tristique magna. Sed at lacinia leo. Nunc ac sem eget nisl tempus fermentum. Nam et quam finibus, pellentesque metus nec, porttitor ante. Fusce sit amet interdum ligula. Sed sodales scelerisque ligula. Proin auctor leo nec odio fringilla molestie. Phasellus interdum, dui et mollis venenatis, augue tellus tempor turpis, eget tempus lorem nibh in nunc. Fusce quis nibh nec risus vestibulum fermentum. ', 'html5-js-css3.png', 'titanium-170190.mp3', '2024-06-28 12:22:44', '2');
 
 INSERT into `follows` (`followed_id`, `follower_id`) VALUES
 (1, 2),
@@ -165,13 +165,18 @@ INSERT INTO `comments` (`id`, `content`, `created_at`, `user_id`, `post_id`) VAL
 (3, 'Comment3', '2024-06-16 13:51:43', 3, 1),
 (4, 'Comment4', '2024-06-16 13:57:08', 4, 1);
 
+-- case LIKE = 0;
+-- case COMMENT = 1;
+-- case FOLLOW = 2;
+-- case POST = 3;
 INSERT INTO `notifications` (`id`, `type`, `created_at`, `was_read`, `receiver_id`, `creator_id`, `post_id`, `comment_id`) VALUES
-(1, 0, '2024-06-16 13:13:08', 0, 1, 2, 1, NULL),
-(2, 0, '2024-06-16 13:13:23', 0, 1, 3, 1, NULL),
-(3, 0, '2024-06-16 13:51:43', 0, 1, 4, 1, NULL);
-
-INSERT INTO `notifications` (`id`, `type`, `created_at`, `receiver_id`, `creator_id`, `post_id`, `comment_id`) VALUES
-(4, 0, '2024-06-16 13:57:08', 1, 5, 1, NULL);
+(1, 0, '2024-06-16 13:13:08', 0, 1, 2, 1, NULL), -- LIKE
+(2, 0, '2024-06-16 13:13:23', 0, 1, 3, 1, NULL), -- LIKE
+(3, 0, '2024-06-16 13:51:43', 0, 1, 4, 1, NULL), -- LIKE
+(4, 0, '2024-06-16 13:57:08', 0, 1, 5, 1, NULL), -- LIKE
+(5, 2, '2024-06-16 13:57:08', 0, 1, 2, NULL, NULL), -- FOLLOW
+(6, 3, '2024-06-28 12:22:44', 0, 1, 2, 6, NULL), -- POST
+(7, 1, '2024-06-16 13:13:23', 0, 1, 2, 1, 2); -- COMMENT
 
 -- INSERT into `usergenres` (`genre_id`, `user_id`) VALUES
 -- (1, 1),
