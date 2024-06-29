@@ -40,15 +40,15 @@
     </div>
 
     <footer>
-        <ul>
+        <ul class="btn-group-vertical" role="group" style="list-style: none;">
             <li>
-            <button class="like-button" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
+            <button id="likeBtn<?php echo $post['id']; ?>" class="like-button btn <?php if ($dbh->doesUserLikePost($user_id, $post['id'])) { echo "btn-primary"; } else { echo "btn-outline-primary"; } ?>" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
         <i class="bi bi-hand-thumbs-up"></i> Mi piace
             </button>
 <span class="like-count"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
 
             </li>
-            <li><a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>"><i class="bi bi-chat"></i> Commenti</a></li>
+            <li><a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>" class="btn btn-outline-primary"><i class="bi bi-chat"></i> Commenti</a></li>
 <?php if ($user_id == $post['user_id']): ?>
             <li>
                 <!-- Elimina Post Button trigger modal -->
