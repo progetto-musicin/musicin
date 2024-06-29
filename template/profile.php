@@ -3,6 +3,10 @@
 <?php else: ?>
 <section class="border-bottom">
     <h2><?php echo htmlspecialchars($user['username']); ?></h2>
+    <p>
+        <?php if (!empty($user["name"])) { echo htmlspecialchars($user["name"]); if(!empty($user["surname"])) { echo htmlspecialchars(" "); } } ?>
+        <?php if (!empty($user["surname"])) { echo htmlspecialchars($user["surname"]); } ?>
+    </p>
 
     <!-- Immagine Profilo -->
 <?php if (!empty($user['profile_image'])): ?>
@@ -11,20 +15,14 @@
 
     <!-- Numero di Follower e Seguiti -->
     <ul>
-        <li><a href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
-        <li><a href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
+        <li><a class="btn btn-outline-primary" href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
+        <li><a class="btn btn-outline-primary" href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
     </ul>
 
 <?php if ($isMyProfile): ?>
-    <a href="edit-profile.php">Modifica Profilo</a>
+    <a class="btn btn-outline-primary" href="edit-profile.php">Modifica Profilo</a>
 <?php endif; ?>
     <ul>
-<?php if (!empty($user["name"])): ?>
-        <li>Nome: <?php echo htmlspecialchars($user["name"]); ?></li>
-<?php endif; ?>
-<?php if (!empty($user["surname"])): ?>
-        <li>Nome: <?php echo htmlspecialchars($user["surname"]); ?></li>
-<?php endif; ?>
 <?php if (!empty($user["genre_id"])): ?>
         <li>Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
 <?php endif; ?>
