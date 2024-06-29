@@ -13,7 +13,7 @@
 </div>
 */ ?>
 
-<article class="post" id="post-<?php echo $post['id']; ?>">
+<article class="post card card-body" id="post-<?php echo $post['id']; ?>">
     <header>
         <h2><?php echo htmlspecialchars($post['title']); ?></h2>
 <?php if (!empty($post['username'])): ?>
