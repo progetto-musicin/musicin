@@ -137,6 +137,8 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `image`) VALUES
 (4, 'user4', 'user4@user4.com', '', NULL),
 (5, 'user5', 'user5@user5.com', '', NULL);
 
+UPDATE `users` SET `name` = 'Mario', `surname` = 'Rossi', `genre_id` = 1 WHERE `users`.`id` = 1;
+
 INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `user_id`) VALUES
 (1, 'Title1', 'Content1', '', '', '2024-06-16 13:13:08', 1),
 (2, 'Title2', 'Content2', '', '', '2024-06-16 13:13:23', 1),
