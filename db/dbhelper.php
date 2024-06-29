@@ -313,10 +313,20 @@ class DatabaseHelper {
         }
     }
 
+    // Imposta una notifica come letta
     public function setNotificationRead($notification_id) {
         $query = "UPDATE notifications SET was_read = 1 WHERE id = :notification_id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':notification_id', $notification_id);
+        return $stmt->execute();
+    }
+
+    // Rimuove una notifica
+    public function deleteNotification($user_id, $notification_id) {
+        $query = "DELETE FROM notifications WHERE id = :notification_id AND receiver_id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':notification_id', $notification_id);
+        $stmt->bindParam(':user_id', $user_id);
         return $stmt->execute();
     }
 }
