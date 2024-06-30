@@ -133,8 +133,8 @@ INSERT INTO `genres` (`id`, `name`) VALUES
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `image`) VALUES
 (1, 'admin', 'admin@admin.com', '', 'accessibility.jpg'),
 (2, 'user2', 'user2@user2.com', '', 'bootstrap-logo-shadow.png'),
-(3, 'user3', 'user3@user3.com', '', NULL),
-(4, 'user4', 'user4@user4.com', '', NULL),
+(3, 'user3', 'user3@user3.com', '', 'php.png'),
+(4, 'user4', 'user4@user4.com', '', 'html5-js-css3.png'),
 (5, 'user5', 'user5@user5.com', '', NULL);
 
 UPDATE `users` SET `name` = 'Mario', `surname` = 'Rossi', `genre_id` = 1 WHERE `users`.`id` = 1;
