@@ -48,7 +48,7 @@
                 <span class="like-count"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
             </li>
 
-        <button class="btn btn-outline-primary copy-link-btn" data-link="<?php echo htmlspecialchars("http://example.com/post.php?id=" . $post['id']); ?>">
+        <button class="btn btn-outline-primary copy-link-btn" data-link="<?php echo htmlspecialchars("http" . (isset($_SERVER["HTTPS"]) ? "s" : "") . "://" . $_SERVER["HTTP_HOST"] . "/comments.php?post_id=" . $post['id']); ?>">
         <i class="bi bi-share-fill"></i> Copia Link
         </button>
 
