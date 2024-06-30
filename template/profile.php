@@ -27,20 +27,20 @@
     </div>
     <ul class="list-group list-group-horizontal pb-1">
 <?php if( (!empty($user["name"])) || (!empty($user["surname"])) ): ?>
-    <li class="badge text-bg-primary m-1">
+    <li class="badge text-bg-primary m-1 text-wrap">
         <?php if (!empty($user["name"])) { echo htmlspecialchars($user["name"]); if(!empty($user["surname"])) { echo htmlspecialchars(" "); } } ?>
         <?php if (!empty($user["surname"])) { echo htmlspecialchars($user["surname"]); } ?>
     </li>
 <?php endif; ?>
 
 <?php if (!empty($user["genre_id"])): ?>
-    <li class="badge text-bg-primary m-1">Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
+    <li class="badge text-bg-primary m-1 text-wrap">Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
 <?php endif; ?>
     </ul>
 
     <!-- Immagine Profilo -->
 <?php if (!empty($user['profile_image'])): ?>
-    <img src="<?php echo UPLOAD_DIR . htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo" class="avatar">
+    <img src="<?php echo UPLOAD_DIR . htmlspecialchars($user['profile_image']); ?>" alt="Immagine Profilo" class="avatar img-fluid">
 <?php endif; ?>
 
     <!-- Numero di Follower e Seguiti -->
