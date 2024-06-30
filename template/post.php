@@ -39,8 +39,8 @@
         <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
     </div>
 
-    <footer>
-        <ul class="btn-group-vertical" role="group" style="list-style: none;">
+    <footer class="card-footer">
+        <ul class="post-buttons list-group list-group-horizontal justify-content-start" role="group" style="list-style: none;">
             <li>
                 <button id="likeBtn<?php echo $post['id']; ?>" class="like-button btn <?php if ($dbh->doesUserLikePost($user_id, $post['id'])) { echo "btn-primary"; } else { echo "btn-outline-primary"; } ?>" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
                     <span class="bi bi-hand-thumbs-up"></span> Mi piace:

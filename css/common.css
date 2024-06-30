@@ -26,3 +26,9 @@ audio {
     width: 30pt;
     object-fit: scale-down;
 }
+
+@media (width <= 400px) {
+    .post-buttons {
+        flex-direction: column;
+    }
+}
