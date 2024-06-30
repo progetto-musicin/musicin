@@ -25,10 +25,18 @@
         <?php endif; ?>
 <?php endif; ?>
     </div>
-    <p>
+    <ul>
+<?php if( (!empty($user["name"])) || (!empty($user["surname"])) ): ?>
+    <li class="badge text-bg-primary">
         <?php if (!empty($user["name"])) { echo htmlspecialchars($user["name"]); if(!empty($user["surname"])) { echo htmlspecialchars(" "); } } ?>
         <?php if (!empty($user["surname"])) { echo htmlspecialchars($user["surname"]); } ?>
-    </p>
+    </li>
+<?php endif; ?>
+
+<?php if (!empty($user["genre_id"])): ?>
+    <li class="badge text-bg-primary">Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
+<?php endif; ?>
+    </ul>
 
     <!-- Immagine Profilo -->
 <?php if (!empty($user['profile_image'])): ?>
@@ -36,16 +44,11 @@
 <?php endif; ?>
 
     <!-- Numero di Follower e Seguiti -->
-    <ul>
-        <li><a class="btn btn-outline-primary" href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
-        <li><a class="btn btn-outline-primary" href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
+    <ul class="list-group list-group-horizontal" style="list-style: none;">
+        <li class="p-2"><a class="btn btn-outline-primary" href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
+        <li class="p-2"><a class="btn btn-outline-primary" href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
     </ul>
 
-    <ul>
-<?php if (!empty($user["genre_id"])): ?>
-        <li>Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
-<?php endif; ?>
-    </ul>
 </section>
 
 <!-- Visualizzazione dei post -->
