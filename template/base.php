@@ -57,8 +57,9 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
                     </div>
                 </div>
                 <form class="d-flex" role="search" action="search.php" method="get">
-                <input class="form-control me-2" type="search" id="searchBar" name="user_id" placeholder="Cerca..." aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <label for="searchBar" class="visually-hidden">Nome utente da cercare</label>
+                <input class="form-control me-2" type="search" id="searchBar" name="user_id" placeholder="Cerca utente..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Cerca</button>
             </form>
                 <!-- <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
