@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('.like-button').off('click').on('click', function() { // https://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
         let postId = $(this).data('post-id');
-        let likeCountElement = $(this).siblings('.like-count');
+        let likeCountElement = $(this).children('.like-count');
         
         $.ajax({
             type: 'POST',
