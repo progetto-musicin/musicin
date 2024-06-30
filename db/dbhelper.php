@@ -262,11 +262,25 @@ private function updateFollowerCount($user_id) {
         if ($user_id != $this->getCommentById($comment_id)["user_id"]) {
             return false;
         }
+        $this->conn->beginTransaction();
+
+        $query_notifications_comments = "DELETE FROM notifications WHERE comment_id = :comment_id";
+        $stmt_notifications_comments = $this->conn->prepare($query_notifications_comments);
+        $stmt_notifications_comments->bindParam(':comment_id', $comment_id);
+        $res_notifications_comments = $stmt_notifications_comments->execute();
+
         $query = "DELETE FROM comments WHERE id = :comment_id AND user_id = :user_id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':comment_id', $comment_id);
         $stmt->bindParam(':user_id', $user_id);
-        return $stmt->execute();
+        $res_comment = $stmt->execute();
+
+        if (!$res_notifications_comments || !$res_comment) {
+            $this->conn->rollBack();
+            return false;
+        }
+        $this->conn->commit();
+        return true;
     }
 
     public function getCommentById($comment_id) {
