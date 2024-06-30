@@ -54,7 +54,10 @@
                 </button>
             </li>
 
-            <li><a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>" class="btn btn-outline-primary"><span class="bi bi-chat"></span> Commenti</a></li>
+            <li>
+                <a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>" class="btn btn-outline-primary"><span class="bi bi-chat"></span> Commenti</a>
+            </li>
+
 <?php if (getCurrentUserId() == $post['user_id']): ?>
             <li>
                 <!-- Elimina Post Button trigger modal -->
