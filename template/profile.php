@@ -25,16 +25,16 @@
         <?php endif; ?>
 <?php endif; ?>
     </div>
-    <ul>
+    <ul class="list-group list-group-horizontal pb-1">
 <?php if( (!empty($user["name"])) || (!empty($user["surname"])) ): ?>
-    <li class="badge text-bg-primary">
+    <li class="badge text-bg-primary m-1">
         <?php if (!empty($user["name"])) { echo htmlspecialchars($user["name"]); if(!empty($user["surname"])) { echo htmlspecialchars(" "); } } ?>
         <?php if (!empty($user["surname"])) { echo htmlspecialchars($user["surname"]); } ?>
     </li>
 <?php endif; ?>
 
 <?php if (!empty($user["genre_id"])): ?>
-    <li class="badge text-bg-primary">Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
+    <li class="badge text-bg-primary m-1">Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
 <?php endif; ?>
     </ul>
 
