@@ -21,6 +21,25 @@
 
 <?php if ($isMyProfile): ?>
     <a class="btn btn-outline-primary" href="edit-profile.php">Modifica Profilo</a>
+<?php else: ?>
+
+    <?php if (isset($_SESSION['user_id'])): ?>
+            <?php if ($dbh->isFollowing($_SESSION['user_id'], $user_id)): ?>
+                <form id="unfollowForm" action="php/processa-unfollow.php" method="post">
+                    <input type="hidden" name="followed_id" value="<?php echo htmlspecialchars($user_id); ?>">
+                    <button id="unfollowButton" type="submit" class="btn btn-outline-danger">Smetti di seguire</button>
+                </form>
+            <?php else: ?>
+                <form id="followForm" action="php/processa-follow.php" method="post">
+                    <input type="hidden" name="followed_id" value="<?php echo htmlspecialchars($user_id); ?>">
+                    <button id="followButton" type="submit" class="btn btn-outline-primary">Segui</button>
+                </form>
+            <?php endif; ?>
+        <?php else: ?>
+            <a href="../profile.php" class="btn btn-primary">Accedi per seguire</a>
+        <?php endif; ?>
+
+
 <?php endif; ?>
     <ul>
 <?php if (!empty($user["genre_id"])): ?>

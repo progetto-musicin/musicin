@@ -88,6 +88,8 @@ class DatabaseHelper {
         $followers_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $followers_ids;
     }
+
+
     public function getFollowing($user_id) {
         $query = "SELECT followed_id FROM follows WHERE follower_id = :follower_id";
         $stmt = $this->conn->prepare($query);
@@ -95,6 +97,56 @@ class DatabaseHelper {
         $stmt->execute();
         $followed_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $followed_ids;
+    }
+
+    public function isFollowing($follower_id, $followed_id) {
+        $query = "SELECT COUNT(*) as count FROM follows WHERE follower_id = :follower_id AND followed_id = :followed_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':follower_id', $follower_id);
+        $stmt->bindParam(':followed_id', $followed_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'] > 0;
+    }
+
+    public function followUser($follower_id, $followed_id) {
+    try {
+        $query = "INSERT INTO follows (follower_id, followed_id) VALUES (:follower_id, :followed_id)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':follower_id', $follower_id);
+        $stmt->bindParam(':followed_id', $followed_id);
+        $stmt->execute();
+
+        // Dopo aver inserito il follow, aggiorna il contatore dei follower dell'utente seguito
+        $this->updateFollowerCount($followed_id);
+
+        return true; // Restituisci true se l'inserimento è riuscito
+    } catch (PDOException $e) {
+        // Gestisci eventuali errori di inserimento
+        echo "Errore durante il follow: " . $e->getMessage();
+        return false;
+    }
+}
+
+// Funzione per aggiornare il contatore dei follower
+private function updateFollowerCount($user_id) {
+    try {
+        $query = "UPDATE users SET num_followers = num_followers + 1 WHERE id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Gestisci eventuali errori di aggiornamento
+        echo "Errore durante l'aggiornamento del contatore dei follower: " . $e->getMessage();
+    }
+}
+
+    public function unfollowUser($follower_id, $followed_id) {
+        $query = "DELETE FROM follows WHERE follower_id = :follower_id AND followed_id = :followed_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':follower_id', $follower_id);
+        $stmt->bindParam(':followed_id', $followed_id);
+        return $stmt->execute();
     }
 
     public function getNotifications($user_id) {
