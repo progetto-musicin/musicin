@@ -30,7 +30,7 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
 
     <div class ="position-fixed bottom-0 end-0 mb-3 me-3">
         <button class="btn btn-bd-primary py-2" onclick="topFunction()" id="scrollToTopBtn" title="Vai all'inizio della pagina">
-            <i class="bi bi-arrow-up-circle"></i>
+            <span class="bi bi-arrow-up-circle"></span>
             <span class="visually-hidden">Vai all'inizio della pagina</span>
         </button>
     </div>
@@ -45,11 +45,11 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
                             <?php if (!empty($profile_image)): ?>
                                 <img class="avatar-thumbnail img-thumbnail rounded-circle" src="<?php echo UPLOAD_DIR . htmlspecialchars($profile_image); ?>" alt="Immagine Profilo">
                             <?php else: ?>
-                                <i class="bi bi-person-circle align-middle"></i>
+                                <span class="bi bi-person-circle align-middle"></span>
                             <?php endif; ?>
                             <span class="d-none d-sm-inline align-middle"><?php echo htmlspecialchars($username); ?></span>
                         </a>
-                        <a class="nav-link <?php markIfActive("notifications.php"); ?>" href="notifications.php"><i class="bi bi-bell align-middle"></i><span class="d-none d-sm-inline ms-1 align-middle">Notifiche:</span></a>
+                        <a class="nav-link <?php markIfActive("notifications.php"); ?>" href="notifications.php"><span class="bi bi-bell align-middle"></span><span class="d-none d-sm-inline ms-1 align-middle">Notifiche:</span></a>
                         <span id="notification_counter" class="p-1">0</span>
                         <!-- <span id="notification_counter" class="border border-info px-1 rounded-pill rounded-5">0</span> -->
                         <!-- <span id="notification_counter" class="border border-info p-1">0</span> -->
@@ -78,7 +78,7 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
                         <?php foreach ($navlinks as $navlink) : ?>
                             <li class="nav-item">
                                 <a class="nav-link <?php markIfActive($navlink[0]); ?>" href="<?php echo $navlink[0]; ?>">
-                                    <i class="bi <?php echo $navlink[1]; ?>"></i>
+                                    <span class="bi <?php echo $navlink[1]; ?>"></span>
                                     <span class="d-none d-md-inline"><?php echo $navlink[2]; ?></span>
                                 </a>
                             </li>

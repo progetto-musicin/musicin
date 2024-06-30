@@ -4,7 +4,7 @@
 <?php if ($user_id == $comment['user_id']): ?>
     <!-- Elimina Commento Button trigger modal -->
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaCommento<?php echo $comment['id']; ?>Modal">
-        <i class="bi bi-trash"></i>Elimina Commento
+        <span class="bi bi-trash"></span>Elimina Commento
     </button>
     <!-- Elimina Commento Modal -->
     <div class="modal fade" id="eliminaCommento<?php echo $comment['id']; ?>Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminaCommento<?php echo $comment['id']; ?>ModalLabel" aria-hidden="true">
@@ -23,7 +23,7 @@
                     <form action="php/processa-delete-comment.php" method="post">
                         <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($comment['post_id']); ?>">
                         <input type="hidden" name="comment_id" value="<?php echo htmlspecialchars($comment['id']); ?>">
-                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i>Elimina Commento</button>
+                        <button type="submit" class="btn btn-danger"><span class="bi bi-trash"></span>Elimina Commento</button>
                     </form>
                 </div>
             </div>
