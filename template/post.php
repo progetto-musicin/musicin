@@ -48,10 +48,11 @@
                 <span class="like-count"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
             </li>
 
-        <button class="btn btn-outline-primary copy-link-btn" data-link="<?php echo htmlspecialchars("http" . (isset($_SERVER["HTTPS"]) ? "s" : "") . "://" . $_SERVER["HTTP_HOST"] . "/comments.php?post_id=" . $post['id']); ?>">
-        <i class="bi bi-share-fill"></i> Copia Link
-        </button>
-
+            <li>
+                <button class="btn btn-outline-primary copy-link-btn" data-link="<?php echo htmlspecialchars("http" . (isset($_SERVER["HTTPS"]) ? "s" : "") . "://" . $_SERVER["HTTP_HOST"] . "/comments.php?post_id=" . $post['id']); ?>">
+                    <i class="bi bi-share-fill"></i> Copia Link
+                </button>
+            </li>
 
             <li><a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>" class="btn btn-outline-primary"><i class="bi bi-chat"></i> Commenti</a></li>
 <?php if ($user_id == $post['user_id']): ?>
@@ -65,7 +66,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="eliminaPost<?php echo $post['id']; ?>ModalLabel">Elimina Post</h1>
+                                <h2 class="modal-title fs-5" id="eliminaPost<?php echo $post['id']; ?>ModalLabel">Elimina Post</h2>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
