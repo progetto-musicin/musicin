@@ -45,9 +45,14 @@
             <button id="likeBtn<?php echo $post['id']; ?>" class="like-button btn <?php if ($dbh->doesUserLikePost($user_id, $post['id'])) { echo "btn-primary"; } else { echo "btn-outline-primary"; } ?>" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
         <i class="bi bi-hand-thumbs-up"></i> Mi piace
             </button>
-<span class="like-count"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
-
+                <span class="like-count"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
             </li>
+
+        <button class="btn btn-outline-primary copy-link-btn" data-link="<?php echo htmlspecialchars("http://example.com/post.php?id=" . $post['id']); ?>">
+        <i class="bi bi-share-fill"></i> Copia Link
+        </button>
+
+
             <li><a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>" class="btn btn-outline-primary"><i class="bi bi-chat"></i> Commenti</a></li>
 <?php if ($user_id == $post['user_id']): ?>
             <li>
