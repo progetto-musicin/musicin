@@ -39,7 +39,7 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
         <div class="container justify-content-center border-bottom">
             <div class="col-12">
                 <div class="d-flex">
-                    <h1><a class="navbar-brand" href="/">Music.In</a></h1>
+                    <h1><a class="navbar-brand h1 fs-1" href="/">Music.In</a></h1>
                     <div class="container nav nav-pills align-items-center justify-content-end">
                         <a class="nav-link" href="profile.php">
                             <?php if (!empty($profile_image)): ?>
