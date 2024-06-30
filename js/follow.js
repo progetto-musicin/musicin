@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("change", function() {
     $('#followButton').on('click', function(e) {
         e.preventDefault();
 
