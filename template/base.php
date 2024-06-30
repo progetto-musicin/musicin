@@ -70,7 +70,8 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
                     <span class="navbar-toggler-icon"></span>
                 </button> -->
                 <!-- <div class="px-5 navbar-collapse collapse" id="navbarCollapse"> -->
-                <div class="px-5 navbar-collapse" id="navbarCollapse">
+                <!-- <div class="px-5 navbar-collapse" id="navbarCollapse"> -->
+                <div class="navbar-collapse" id="navbarCollapse">
                     <ul class="nav nav-pills col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0"> -->
                         <?php
