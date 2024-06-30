@@ -49,11 +49,16 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
                             <?php endif; ?>
                             <span class="d-none d-sm-inline align-middle"><?php echo htmlspecialchars($username); ?></span>
                         </a>
-                        <a class="nav-link <?php markIfActive("notifications.php"); ?>" href="notifications.php"><span class="bi bi-bell align-middle"></span><span class="d-none d-sm-inline ms-1 align-middle">Notifiche:</span></a>
-                        <span id="notification_counter" class="p-1">0</span>
-                        <!-- <span id="notification_counter" class="border border-info px-1 rounded-pill rounded-5">0</span> -->
-                        <!-- <span id="notification_counter" class="border border-info p-1">0</span> -->
-                        <!-- <span id="notification_counter" class="d-flex justify-content-center align-items-center">0</span> -->
+                        <a class="nav-link <?php markIfActive("notifications.php"); ?>" href="notifications.php">
+                            <div class="text-nowrap">
+                                <span class="bi bi-bell align-middle"></span>
+                                <span class="d-none d-sm-inline ms-1 align-middle">Notifiche:</span>
+                                <span id="notification_counter" class="p-1 align-middle">0</span>
+                                <!-- <span id="notification_counter" class="border border-info px-1 rounded-pill rounded-5">0</span> -->
+                                <!-- <span id="notification_counter" class="border border-info p-1">0</span> -->
+                                <!-- <span id="notification_counter" class="d-flex justify-content-center align-items-center">0</span> -->
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <form class="d-flex" role="search" action="search.php" method="get">
