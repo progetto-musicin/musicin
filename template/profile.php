@@ -2,7 +2,7 @@
     <h2>Utente non trovato.</h2>
 <?php else: ?>
 <section class="border-bottom">
-    <div class="d-flex justify-content-start align-items-center">
+    <div class="d-flex justify-content-start align-items-center flex-wrap">
         <h2 class="pe-2"><?php echo htmlspecialchars($user['username']); ?></h2>
 <?php if ($isMyProfile): ?>
     <a class="btn btn-outline-primary" href="edit-profile.php">Modifica Profilo</a>
@@ -25,16 +25,16 @@
         <?php endif; ?>
 <?php endif; ?>
     </div>
-    <ul class="list-group list-group-horizontal pb-1">
+    <ul class="list-group list-group-horizontal py-2 flex-wrap gap-2">
 <?php if( (!empty($user["name"])) || (!empty($user["surname"])) ): ?>
-    <li class="badge text-bg-primary m-1 text-wrap">
+    <li class="badge text-bg-primary text-wrap">
         <?php if (!empty($user["name"])) { echo htmlspecialchars($user["name"]); if(!empty($user["surname"])) { echo htmlspecialchars(" "); } } ?>
         <?php if (!empty($user["surname"])) { echo htmlspecialchars($user["surname"]); } ?>
     </li>
 <?php endif; ?>
 
 <?php if (!empty($user["genre_id"])): ?>
-    <li class="badge text-bg-primary m-1 text-wrap">Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
+    <li class="badge text-bg-primary text-wrap">Genere preferito: <?php echo htmlspecialchars($dbh->getGenreName($user["genre_id"])); ?></li>
 <?php endif; ?>
     </ul>
 
@@ -44,9 +44,9 @@
 <?php endif; ?>
 
     <!-- Numero di Follower e Seguiti -->
-    <ul class="list-group list-group-horizontal" style="list-style: none;">
-        <li class="p-2"><a class="btn btn-outline-primary" href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
-        <li class="p-2"><a class="btn btn-outline-primary" href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
+    <ul class="list-group list-group-horizontal flex-wrap gap-2 pb-2" style="list-style: none;">
+        <li><a class="btn btn-outline-primary" href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
+        <li><a class="btn btn-outline-primary" href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
     </ul>
 
 </section>
