@@ -18,6 +18,8 @@
     <script src="js/like.js"></script>
     <script src="js/follow.js"></script>
     <script src="js/share.js"></script>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body class="bg-light d-flex flex-column h-100">
 
