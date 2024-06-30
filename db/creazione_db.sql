@@ -135,9 +135,13 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `image`) VALUES
 (2, 'user2', 'user2@user2.com', '', 'bootstrap-logo-shadow.png'),
 (3, 'user3', 'user3@user3.com', '', 'php.png'),
 (4, 'user4', 'user4@user4.com', '', 'html5-js-css3.png'),
-(5, 'user5', 'user5@user5.com', '', NULL);
+(5, 'user5', 'user5@user5.com', '', NULL),
+(6, 'user6', 'user6@user6.com', '', NULL);
 
 UPDATE `users` SET `name` = 'Mario', `surname` = 'Rossi', `genre_id` = 1 WHERE `users`.`id` = 1;
+UPDATE `users` SET `name` = 'Luca', `genre_id` = 2 WHERE `users`.`id` = 2;
+UPDATE `users` SET `surname` = 'Verdi', `genre_id` = 3 WHERE `users`.`id` = 3;
+UPDATE `users` SET `name` = 'Giovanni', `surname` = 'Bianchi' WHERE `users`.`id` = 4;
 
 INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `user_id`) VALUES
 (1, 'Title1', 'Content1', '', '', '2024-06-16 13:13:08', 1),
@@ -149,11 +153,18 @@ INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `u
 (5, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis auctor justo vel tempus. Ut ligula ex, porttitor ut finibus eget, viverra et nunc. Nunc euismod semper tellus eget pellentesque. Quisque vitae mattis dolor, ac imperdiet odio. Quisque dictum consectetur volutpat. Quisque non venenatis ante. Mauris tristique fringilla purus ultricies bibendum. Nam ut pretium mauris. Maecenas sagittis tempor condimentum.\r\n\r\nMauris vel arcu tempor, ornare dolor et, tristique magna. Sed at lacinia leo. Nunc ac sem eget nisl tempus fermentum. Nam et quam finibus, pellentesque metus nec, porttitor ante. Fusce sit amet interdum ligula. Sed sodales scelerisque ligula. Proin auctor leo nec odio fringilla molestie. Phasellus interdum, dui et mollis venenatis, augue tellus tempor turpis, eget tempus lorem nibh in nunc. Fusce quis nibh nec risus vestibulum fermentum. ', 'php.png', 'titanium-170190.mp3', '2024-06-28 12:22:44', '1'),
 (6, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis auctor justo vel tempus. Ut ligula ex, porttitor ut finibus eget, viverra et nunc. Nunc euismod semper tellus eget pellentesque. Quisque vitae mattis dolor, ac imperdiet odio. Quisque dictum consectetur volutpat. Quisque non venenatis ante. Mauris tristique fringilla purus ultricies bibendum. Nam ut pretium mauris. Maecenas sagittis tempor condimentum.\r\n\r\nMauris vel arcu tempor, ornare dolor et, tristique magna. Sed at lacinia leo. Nunc ac sem eget nisl tempus fermentum. Nam et quam finibus, pellentesque metus nec, porttitor ante. Fusce sit amet interdum ligula. Sed sodales scelerisque ligula. Proin auctor leo nec odio fringilla molestie. Phasellus interdum, dui et mollis venenatis, augue tellus tempor turpis, eget tempus lorem nibh in nunc. Fusce quis nibh nec risus vestibulum fermentum. ', 'html5-js-css3.png', 'titanium-170190.mp3', '2024-06-28 12:22:44', '2');
 
+INSERT INTO `posts` (`id`, `title`, `content`, `image`, `song`, `created_at`, `user_id`) VALUES
+(7, 'Title7', 'Content7', '', '', '2024-06-16 13:13:08', 6); -- user id 1 won't see this by default
+
 INSERT into `follows` (`followed_id`, `follower_id`) VALUES
 (1, 2),
-(2, 1),
 (1, 3),
-(1, 4);
+(1, 4),
+(1, 5),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1);
 
 INSERT into `likes` (`post_id`, `user_id`) VALUES
 (1, 1),
