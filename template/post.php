@@ -55,7 +55,7 @@
             </li>
 
             <li><a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>" class="btn btn-outline-primary"><i class="bi bi-chat"></i> Commenti</a></li>
-<?php if ($user_id == $post['user_id']): ?>
+<?php if (getCurrentUserId() == $post['user_id']): ?>
             <li>
                 <!-- Elimina Post Button trigger modal -->
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaPost<?php echo $post['id']; ?>Modal">
