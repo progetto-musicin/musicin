@@ -117,18 +117,15 @@ class DatabaseHelper {
         $stmt->bindParam(':followed_id', $followed_id);
         $stmt->execute();
 
-        // Dopo aver inserito il follow, aggiorna il contatore dei follower dell'utente seguito
         $this->updateFollowerCount($followed_id);
 
-        return true; // Restituisci true se l'inserimento è riuscito
+        return true; 
     } catch (PDOException $e) {
-        // Gestisci eventuali errori di inserimento
         echo "Errore durante il follow: " . $e->getMessage();
         return false;
     }
 }
 
-// Funzione per aggiornare il contatore dei follower
 private function updateFollowerCount($user_id) {
     try {
         $query = "UPDATE users SET num_followers = num_followers + 1 WHERE id = :user_id";
@@ -136,7 +133,6 @@ private function updateFollowerCount($user_id) {
         $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
     } catch (PDOException $e) {
-        // Gestisci eventuali errori di aggiornamento
         echo "Errore durante l'aggiornamento del contatore dei follower: " . $e->getMessage();
     }
 }
