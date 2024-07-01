@@ -21,11 +21,6 @@ $user = $dbh->getUserInfo($user_id);
 $posts = $dbh->getUserPosts($user_id);
 $genres = $dbh->getAllGenres();
 
-$isFollowing = false;
-if ($isLoggedIn && !$isMyProfile) {
-    $isFollowing = isFollowing($dbh, $loggedInUserId, $user_id);
-}
-
 $templateParams["title"] = "Music.In - Profilo";
 $templateParams["name"] = "profile";
 require __DIR__ . '/template/base.php';
