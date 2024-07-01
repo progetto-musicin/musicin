@@ -13,7 +13,7 @@ $loggedInUserId = $isLoggedIn ? $_SESSION['user_id'] : null;
 if(empty($_GET['id'])) {
     $user_id = $_SESSION['user_id'];
 } else {
-    $user_id = $_GET['id'];
+    $user_id = intval($_GET['id']);
 }
 $isMyProfile = getCurrentUserId() == $user_id ? true : false;
 
