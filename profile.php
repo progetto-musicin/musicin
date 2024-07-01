@@ -11,11 +11,11 @@ $loggedInUserId = $isLoggedIn ? $_SESSION['user_id'] : null;
  * del proprio se vuoto o non presente.
  */
 $isMyProfile = false;
-if(empty($_GET['id'])) {
+if(empty($_GET['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $isMyProfile = true;
 } else {
-    $user_id = $_GET['id'];
+    $user_id = intval($_GET['user_id']);
 }
 
 $user = $dbh->getUserInfo($user_id);
@@ -33,7 +33,7 @@ function isFollowing($follower_id, $followed_id, $dbh) {
     return false;
 }
 
-    $isFollowing = false;
+$isFollowing = false;
 if ($isLoggedIn && !$isMyProfile) {
     $isFollowing = isFollowing($loggedInUserId, $user_id, $dbh);
 }
