@@ -43,26 +43,26 @@
         <ul class="post-buttons list-group list-group-horizontal justify-content-start flex-wrap gap-2" role="group" style="list-style: none;">
             <li>
                 <button id="likeBtn<?php echo $post['id']; ?>" class="like-button btn <?php if ($dbh->doesUserLikePost(getCurrentUserId(), $post['id'])) { echo "btn-primary"; } else { echo "btn-outline-primary"; } ?>" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
-                    <span class="bi bi-hand-thumbs-up"></span> Mi piace:
+                    <span class="bi bi-hand-thumbs-up"></span><span class="ms-1 d-none d-sm-inline">Mi piace:</span>
                     <span class="like-count badge text-bg-secondary"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
                 </button>
             </li>
 
             <li>
                 <button class="btn btn-outline-primary copy-link-btn" data-link="<?php echo htmlspecialchars("http" . (isset($_SERVER["HTTPS"]) ? "s" : "") . "://" . $_SERVER["HTTP_HOST"] . "/comments.php?post_id=" . $post['id']); ?>">
-                    <span class="bi bi-share-fill"></span> Copia Link
+                    <span class="bi bi-share-fill"></span><span class="ms-1 d-none d-sm-inline">Copia Link</span>
                 </button>
             </li>
 
             <li>
-                <a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>" class="btn btn-outline-primary"><span class="bi bi-chat"></span> Commenti</a>
+                <a href="comments.php?post_id=<?php echo htmlspecialchars($post['id']); ?>" class="btn btn-outline-primary"><span class="bi bi-chat"></span><span class="ms-1 d-none d-sm-inline">Commenti</span></a>
             </li>
 
 <?php if (getCurrentUserId() == $post['user_id']): ?>
             <li>
                 <!-- Elimina Post Button trigger modal -->
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaPost<?php echo $post['id']; ?>Modal">
-                    <span class="bi bi-trash"></span>Elimina Post
+                    <span class="bi bi-trash"></span><span class="ms-1 d-none d-sm-inline">Elimina Post</span>
                 </button>
                 <!-- Elimina Post Modal -->
                 <div class="modal fade" id="eliminaPost<?php echo $post['id']; ?>Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminaPost<?php echo $post['id']; ?>ModalLabel" aria-hidden="true">
