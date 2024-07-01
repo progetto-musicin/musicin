@@ -16,10 +16,18 @@ audio {
 }
 
 .avatar {
+    height: 100pt;
+    width: auto;
+    border: gray 1px solid;
+    margin-bottom: 1rem;
+    object-fit: scale-down;
+ }
+
+.avatar-rounded {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 .avatar-thumbnail {
