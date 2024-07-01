@@ -1,16 +1,18 @@
 <h2>Seguiti di <?php echo htmlspecialchars($dbh->getUserInfo($profile_user_id)['username']); ?></h2>
-<ul>
+<ul class="list-group list-group-flush">
     <?php foreach ($following as $followed): ?>
         <?php $followed_info = $dbh->getUserInfo($followed['followed_id']); ?>
-        <li>
-            <img src="<?php echo UPLOAD_DIR . htmlspecialchars($followed_info['profile_image']); ?>" alt="Immagine Profilo" style="width: 50px; height: auto;">
-            <?php echo htmlspecialchars($followed_info['username']); ?>
-            <form method="post">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="<?php echo UPLOAD_DIR . htmlspecialchars($followed_info['profile_image']); ?>" alt="Immagine Profilo" class="avatar img-fluid me-3" style="width: 50px; height: 50px;">
+                <?php echo htmlspecialchars($followed_info['username']); ?>
+            </div>
+            <form method="post" class="mb-0">
                 <input type="hidden" name="followed_id" value="<?php echo htmlspecialchars($followed['followed_id']); ?>">
                 <?php if (isFollowing($dbh, $user_id, $followed['followed_id'])): ?>
-                    <button type="submit" name="action" value="unfollow">Smetti di seguire</button>
+                    <button type="submit" name="action" value="unfollow" class="btn btn-outline-danger">Smetti di seguire</button>
                 <?php else: ?>
-                    <button type="submit" name="action" value="follow">Segui</button>
+                    <button type="submit" name="action" value="follow" class="btn btn-outline-primary">Segui</button>
                 <?php endif; ?>
             </form>
         </li>

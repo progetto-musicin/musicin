@@ -16,11 +16,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #1c2630;
+    background: #ffffff;
+    color: #000000;
 }
 
 form {
-    background: #29313c;
+    background: #2e3642;
     padding: 60px 80px 60px;
     text-align: center;
     display: flex;
