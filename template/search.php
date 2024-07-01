@@ -1,10 +1,10 @@
 <h2><?php echo htmlspecialchars($templateParams["title"]); ?></h2>
-
+<div class="d-flex flex-wrap gap-2">
 <?php foreach ($templateParams["users"] as $user): ?>
     <div class="card mb-3" style="max-width: 540px;">
         <a class="list-group-item" href="profile.php?id=<?php echo $user['id']; ?>">
             <div class="row g-0 align-middle justify-content-center align-items-center">
-                <div class="col-md-4 justify-content-center align-middle align-items-center d-flex" style="max-width: 100pt; height:auto;">
+                <div class="col-md-4 p-3 justify-content-center align-middle align-items-center d-flex" style="max-width: 100pt; height:auto;">
                     <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
                     <?php if (!empty($user['profile_image'])): ?>
                         <img class="img-fluid rounded-start" src="<?php echo UPLOAD_DIR . htmlspecialchars($user['profile_image']); ?>" alt="Immagine profilo">
@@ -29,6 +29,7 @@
         </a>
     </div>
 <?php endforeach; ?>
+</div>
 
 <?php if (empty($templateParams["users"])): ?>
     <p>Nessun utente trovato con l'ID '<?php echo htmlspecialchars($_GET['user_id'] ?? ''); ?>'</p>
