@@ -17,9 +17,9 @@
     <header>
         <h2><?php echo htmlspecialchars($post['title']); ?></h2>
 <?php if (!empty($post['username'])): ?>
-    <p>Pubblicato da: <a href="/profile.php?id=<?php echo $post["user_id"] ?>"><?php echo htmlspecialchars($post['username']); ?></a> alle: <?php echo htmlspecialchars($post['created_at']); ?></p>
+    <p>Pubblicato da: <a href="/profile.php?id=<?php echo $post["user_id"] ?>"><?php echo htmlspecialchars($post['username']); ?></a> il: <?php echo htmlspecialchars(formatDatetime($post['created_at'])); ?></p>
 <?php else: ?>
-        <p><?php echo htmlspecialchars($post['created_at']); ?></p>
+        <p><?php echo htmlspecialchars(formatDatetime($post['created_at'])); ?></p>
 <?php endif; ?>
     </header>
     <div>

@@ -7,7 +7,7 @@
             <?php foreach ($notifications as $notification) : ?>
                 <li class="container card card-body list-group-item <?php if (!$notification["was_read"]) { echo 'fw-bold';} ?>">
                     <div class="row">
-                        <p class="col-10"><?php echo htmlspecialchars((new DateTime($notification['created_at']))->format('d/m/Y H:i:s')); ?></p>
+                        <p class="col-10"><?php echo htmlspecialchars(formatDatetime($notification['created_at'])); ?></p>
                         <form class="col-2 text-end" action="php/processa-delete-notification.php" method="post">
                             <input type="hidden" name="notification_id" value="<?php echo htmlspecialchars($notification['notification_id']); ?>">
                             <button type="submit" class="btn btn-danger text-nowrap"><span class="bi bi-trash"></span><span class="d-none">Elimina notifica</span></button>

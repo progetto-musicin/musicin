@@ -15,6 +15,12 @@ function markIfActive($pagename){
     }
 }
 
+function formatDatetime($datetime) {
+    // return date("d/m/Y H:i", strtotime($datetime));
+    return (new DateTime($datetime))->format('d/m/Y H:i');
+    // return (new DateTime($datetime))->format('d/m/Y H:i:s');
+}
+
 function uploadFile($path, $file, $acceptedExtensions, $maxKB = 5000) {
     $fileName = basename($file["name"]);
     $fullPath = $path.$fileName;
