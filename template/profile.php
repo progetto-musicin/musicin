@@ -45,8 +45,8 @@
 
     <!-- Numero di Follower e Seguiti -->
     <ul class="list-group list-group-horizontal flex-wrap gap-2 pb-2" style="list-style: none;">
-        <li><a class="btn btn-outline-primary" href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></a></li>
-        <li><a class="btn btn-outline-primary" href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></a></li>
+        <li><a class="btn btn-outline-primary" href="followers.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Followers: <span class="badge text-bg-secondary"><?php echo htmlspecialchars($dbh->getNumFollowers($user_id)); ?></span></a></li>
+        <li><a class="btn btn-outline-primary" href="following.php?user_id=<?php echo htmlspecialchars($user_id); ?>">Seguiti: <span class="badge text-bg-secondary"><?php echo htmlspecialchars($dbh->getNumFollowing($user_id)); ?></span></a></li>
     </ul>
 
 </section>

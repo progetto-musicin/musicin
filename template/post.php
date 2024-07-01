@@ -44,7 +44,7 @@
             <li>
                 <button id="likeBtn<?php echo $post['id']; ?>" class="like-button btn <?php if ($dbh->doesUserLikePost(getCurrentUserId(), $post['id'])) { echo "btn-primary"; } else { echo "btn-outline-primary"; } ?>" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
                     <span class="bi bi-hand-thumbs-up"></span> Mi piace:
-                    <span class="like-count px-1"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
+                    <span class="like-count badge text-bg-secondary"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
                 </button>
             </li>
 
