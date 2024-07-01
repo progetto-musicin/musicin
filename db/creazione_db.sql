@@ -184,11 +184,11 @@ INSERT INTO `comments` (`id`, `content`, `created_at`, `user_id`, `post_id`) VAL
 -- case POST = 3;
 INSERT INTO `notifications` (`id`, `type`, `created_at`, `was_read`, `receiver_id`, `creator_id`, `post_id`, `comment_id`) VALUES
 (1, 0, '2024-06-16 13:13:08', 1, 1, 2, 1, NULL), -- LIKE
-(2, 0, '2024-06-16 13:13:23', 1, 1, 3, 1, NULL), -- LIKE
+(2, 0, '2024-06-16 13:13:23', 0, 1, 3, 1, NULL), -- LIKE
 (3, 0, '2024-06-16 13:51:43', 0, 1, 4, 1, NULL), -- LIKE
 (4, 0, '2024-06-16 13:57:08', 0, 1, 5, 1, NULL), -- LIKE
 (5, 2, '2024-06-16 13:57:08', 0, 1, 2, NULL, NULL), -- FOLLOW
-(6, 3, '2024-06-28 12:22:44', 0, 1, 2, 6, NULL), -- POST
+(6, 3, '2024-06-28 12:22:44', 1, 1, 2, 6, NULL), -- POST
 (7, 1, '2024-06-16 13:13:23', 0, 1, 2, 1, 2); -- COMMENT
 
 -- INSERT into `usergenres` (`genre_id`, `user_id`) VALUES
