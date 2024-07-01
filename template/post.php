@@ -42,7 +42,7 @@
     <footer class="card-footer">
         <ul class="post-buttons list-group list-group-horizontal justify-content-start flex-wrap gap-2" role="group" style="list-style: none;">
             <li>
-                <button id="likeBtn<?php echo $post['id']; ?>" class="like-button btn <?php if ($dbh->doesUserLikePost($user_id, $post['id'])) { echo "btn-primary"; } else { echo "btn-outline-primary"; } ?>" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
+                <button id="likeBtn<?php echo $post['id']; ?>" class="like-button btn <?php if ($dbh->doesUserLikePost(getCurrentUserId(), $post['id'])) { echo "btn-primary"; } else { echo "btn-outline-primary"; } ?>" data-post-id="<?php echo htmlspecialchars($post['id']); ?>">
                     <span class="bi bi-hand-thumbs-up"></span> Mi piace:
                     <span class="like-count px-1"><?php echo htmlspecialchars($dbh->getNumPostLikes($post['id'])); ?></span>
                 </button>
