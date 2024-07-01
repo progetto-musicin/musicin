@@ -9,9 +9,13 @@ if (!file_exists(UPLOAD_DIR_SAVE)) {
     }
 }
 
-if (!empty($_GET['testing'])) {
-    $_SESSION['user_id'] = $_GET['testing'];   // temporaneamente per testing
+// WARNING
+if ($_SERVER["HTTP_HOST"] === "localhost") {
+    if (!empty($_GET['testing'])) {
+        $_SESSION['user_id'] = $_GET['testing'];   // temporaneamente per testing
+    }
 }
+// ^^^ WARNING ^^^
 
 $pagesWithoutLogin = [
     "login.php",
