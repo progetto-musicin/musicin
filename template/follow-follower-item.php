@@ -14,6 +14,7 @@
             <?php echo htmlspecialchars($user['username']); ?>
         </a>
     </div>
+<?php if ($user['id'] != getCurrentUserId()): ?>
     <form method="post" class="mb-0">
         <input type="hidden" name="followed_id" value="<?php echo htmlspecialchars($user['id']); ?>">
         <?php if (isFollowing($dbh, getCurrentUserId(), $user['id'])): ?>
@@ -22,4 +23,5 @@
             <button type="submit" name="action" value="follow" class="btn btn-outline-primary">Segui</button>
         <?php endif; ?>
     </form>
+<?php endif; ?>
 </li>
