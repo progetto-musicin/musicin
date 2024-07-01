@@ -3,12 +3,12 @@
     <ul>
         <div class="mb-3">
             <label for="title" class="form-label">Titolo:</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Dai un titolo al tuo post">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Dai un titolo al tuo post" required>
         </div>
 
         <div class="mb-3">
             <label for="content" class="form-label">Contenuto</label>
-            <textarea class="form-control" id="content" name="content" rows="3" cols="50"></textarea>
+            <textarea class="form-control" id="content" name="content" rows="3" cols="50" required></textarea>
         </div>
 
         <div class="mb-3">
@@ -21,10 +21,7 @@
             <input class="form-control" type="file" id="audio" name="audio" accept="audio/*">
         </div>
 
-        
     </ul>
     <input class="btn btn-primary" type="submit" value="Pubblica">
     <input class="btn btn-primary" type="reset" value="Cancella">
 </form>
-
-
