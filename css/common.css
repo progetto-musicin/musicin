@@ -26,3 +26,36 @@ audio {
     width: 30pt;
     object-fit: scale-down;
 }
+
+
+form.d-flex[role="search"] {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    background-color: #f9f9f9; 
+    padding: 10px;
+    border-radius: 25px;
+}
+
+form.d-flex[role="search"] .form-control {
+    flex: 1;
+    border: 1px solid #007bff;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+form.d-flex[role="search"] .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+form.d-flex[role="search"] .btn:hover {
+    background-color: #0056b3;
+}
