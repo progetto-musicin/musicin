@@ -1,11 +1,28 @@
 <?php
 require_once __DIR__ . '/../db/connessione-db.php';
 
+function isValidPassword($password) {
+    $lower = preg_match('/[a-z]/', $password);
+    $upper = preg_match('/[A-Z]/', $password);
+    $number = preg_match('/[0-9]/', $password);
+    $special = preg_match('/[!@#$%^&*]/', $password);
+    $length = strlen($password) >= 8;
+
+    return $lower && $upper && $number && $special && $length;
+}
+
 // Verifica se il form è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); //salatura della password
+    $password = $_POST['password'];
     $email = $_POST['email'];
+
+    if (!isValidPassword($password)) {
+        echo "Password does not meet the required criteria.";
+        exit;
+    }
+
+    $passwordHashed = password_hash($password, PASSWORD_BCRYPT); //salatura della password
 
     // Verifica se l'username o l'email sono già registrati
     $query_check = "SELECT COUNT(*) FROM users WHERE username = :username OR email = :email";
@@ -24,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                          VALUES (:username, :password, :email)";
         $stmt_insert = $dbh->prepare($query_insert);
         $stmt_insert->bindParam(':username', $username);
-        $stmt_insert->bindParam(':password', $password);
+        $stmt_insert->bindParam(':password', $passwordHashed);
         $stmt_insert->bindParam(':email', $email);
 
         if ($stmt_insert->execute()) {
