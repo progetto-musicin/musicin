@@ -10,13 +10,12 @@ $loggedInUserId = $isLoggedIn ? $_SESSION['user_id'] : null;
  * Recupera le informazione dell'id passato come parametro oppure
  * del proprio se vuoto o non presente.
  */
-$isMyProfile = false;
 if(empty($_GET['id'])) {
     $user_id = $_SESSION['user_id'];
-    $isMyProfile = true;
 } else {
     $user_id = $_GET['id'];
 }
+$isMyProfile = getCurrentUserId() == $user_id ? true : false;
 
 $user = $dbh->getUserInfo($user_id);
 $posts = $dbh->getUserPosts($user_id);
