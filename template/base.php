@@ -80,6 +80,7 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
                             ["profile.php", "bi-person", "Profilo"],
                             ["new-post.php", "bi-plus-circle", "Nuovo Post"],
                             ["explore.php", "bi bi-music-note-list", "Esplora con SoundCloud"],
+                            ["concerts.php", "bi bi-ticket-perforated", "Concerti con Ticketone"],
                             ["logout.php", "bi-box-arrow-right", "Logout"],
                         ];
                         ?>
