@@ -8,8 +8,8 @@
     <a class="btn btn-outline-primary" href="edit-profile.php">Modifica Profilo</a>
 <?php else: ?>
 
-    <?php if (isset($_SESSION['user_id'])): ?>
-            <?php if ($dbh->isFollowing($_SESSION['user_id'], $user_id)): ?>
+    <?php if (isUserLoggedIn()): ?>
+            <?php if ($dbh->isFollowing(getCurrentUserId(), $user_id)): ?>
                 <form id="unfollowForm" action="php/processa-unfollow.php" method="post">
                     <input type="hidden" name="followed_id" value="<?php echo htmlspecialchars($user_id); ?>">
                     <button id="unfollowButton" type="submit" class="btn btn-outline-danger">Smetti di seguire</button>

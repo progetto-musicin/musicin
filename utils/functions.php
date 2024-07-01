@@ -89,13 +89,14 @@ function uploadSong($path, $song) {
 }
 
 function isFollowing($dbh, $user_id, $profile_user_id) {
-    $following = $dbh->getFollowing($user_id);
-    foreach ($following as $follow) {
-        if ($follow['followed_id'] == $profile_user_id) {
-            return true;
-        }
-    }
-    return false;
+    // $following = $dbh->getFollowing($user_id);
+    // foreach ($following as $follow) {
+    //     if ($follow['followed_id'] == $profile_user_id) {
+    //         return true;
+    //     }
+    // }
+    // return false;
+    return $dbh->isFollowing($user_id, $profile_user_id);
 }
 
 ?>
