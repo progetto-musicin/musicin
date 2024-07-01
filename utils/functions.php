@@ -88,4 +88,14 @@ function uploadSong($path, $song) {
     return uploadFile($path, $song, array(), 10000);
 }
 
+function isFollowing($dbh, $user_id, $profile_user_id) {
+    $following = $dbh->getFollowing($user_id);
+    foreach ($following as $follow) {
+        if ($follow['followed_id'] == $profile_user_id) {
+            return true;
+        }
+    }
+    return false;
+}
+
 ?>

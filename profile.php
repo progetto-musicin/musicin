@@ -22,20 +22,9 @@ $user = $dbh->getUserInfo($user_id);
 $posts = $dbh->getUserPosts($user_id);
 $genres = $dbh->getAllGenres();
 
-// Funzione per verificare se l'utente loggato sta seguendo l'utente del profilo visualizzato
-function isFollowing($follower_id, $followed_id, $dbh) {
-    $followers = $dbh->getFollowers($followed_id);
-    foreach ($followers as $follower) {
-        if ($follower['follower_id'] == $follower_id) {
-            return true;
-        }
-    }
-    return false;
-}
-
-    $isFollowing = false;
+$isFollowing = false;
 if ($isLoggedIn && !$isMyProfile) {
-    $isFollowing = isFollowing($loggedInUserId, $user_id, $dbh);
+    $isFollowing = isFollowing($dbh, $loggedInUserId, $user_id);
 }
 
 $templateParams["title"] = "Music.In - Profilo";

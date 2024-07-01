@@ -5,16 +5,6 @@ require_once __DIR__ . '/bootstrap.php';
 $profile_user_id = $_GET['user_id'];
 $followers = $dbh->getFollowers($profile_user_id);
 
-function isFollowing($dbh, $user_id, $profile_user_id) {
-    $following = $dbh->getFollowing($user_id);
-    foreach ($following as $follow) {
-        if ($follow['followed_id'] == $profile_user_id) {
-            return true;
-        }
-    }
-    return false;
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['action']) && isset($_POST['followed_id'])) {
         $followed_id = $_POST['followed_id'];
