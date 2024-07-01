@@ -23,5 +23,6 @@
 
     </div>
     <input class="btn btn-primary" type="submit" value="Pubblica" />
-    <input class="btn btn-primary" type="reset" value="Cancella" />
+    <label for="reset" class="visually-hidden">Cancella</label>
+    <input class="btn btn-primary" type="reset" id="reset" value="Cancella" />
 </form>
