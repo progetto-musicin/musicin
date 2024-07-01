@@ -38,9 +38,14 @@ $profile_image = $dbh->getUserInfo(getCurrentUserId())['profile_image'];
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container justify-content-center border-bottom">
             <div class="col-12">
-                <div class="d-flex">
-                    <h1><a class="navbar-brand h1 fs-1" href="/">Music.In</a></h1>
-                    <div class="container nav nav-pills align-items-center justify-content-end">
+                <div class="d-flex flex-wrap">
+                    <h1 class="flex-grow-1">
+                        <a class="navbar-brand h1 fs-1" href="/">
+                            <img src="/favicon.ico" alt="Logo Music.In" width="50" height="50">	
+                            <span>Music.In</span>
+                        </a>
+                    </h1>
+                    <div class="nav nav-pills align-items-center">
                         <a class="nav-link" href="profile.php">
                             <?php if (!empty($profile_image)): ?>
                                 <img class="avatar-thumbnail img-thumbnail rounded-circle" src="<?php echo UPLOAD_DIR . htmlspecialchars($profile_image); ?>" alt="Immagine Profilo">
