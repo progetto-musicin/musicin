@@ -22,7 +22,7 @@
         <select class="form-select" id="genre" name="genre">
             <option value="">Nessun genere selezionato</option>
             <?php foreach ($genres as $genre): ?>
-                <option value="<?php echo $genre['id']; ?>"<?php if ($user['genre_id'] == $genre['id']) echo htmlspecialchars('selected'); ?>><?php echo htmlspecialchars($genre['name']); ?></option>
+                <option value="<?php echo $genre['id']; ?>" <?php if ($user['genre_id'] == $genre['id']) echo htmlspecialchars('selected'); ?>><?php echo htmlspecialchars($genre['name']); ?></option>
             <?php endforeach; ?>
         </select><br>
 
