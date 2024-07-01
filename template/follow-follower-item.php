@@ -1,4 +1,5 @@
 <li class="list-group-item d-flex justify-content-between align-items-center">
+    <a class="" href="profile.php?id=<?php echo htmlspecialchars($user['id']); ?>">
     <div class="d-flex align-items-center">
         <div class="me-3">
             <?php if (!empty($user['profile_image']) && file_exists(UPLOAD_DIR . $user['profile_image'])): ?>
@@ -10,10 +11,9 @@
                 </svg>
             <?php endif; ?>
         </div>
-        <a href="profile.php?id=<?php echo htmlspecialchars($user['id']); ?>">
             <?php echo htmlspecialchars($user['username']); ?>
-        </a>
     </div>
+    </a>
 <?php if ($user['id'] != getCurrentUserId()): ?>
     <form method="post" class="mb-0">
         <input type="hidden" name="followed_id" value="<?php echo htmlspecialchars($user['id']); ?>">
