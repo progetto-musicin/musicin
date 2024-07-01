@@ -21,7 +21,7 @@ $user = $dbh->getUserInfo($user_id);
 $posts = $dbh->getUserPosts($user_id);
 $genres = $dbh->getAllGenres();
 
-$templateParams["title"] = "Music.In - Profilo";
+$templateParams["title"] = "Music.In - Profilo di " . $user['username'];
 $templateParams["name"] = "profile";
 require __DIR__ . '/template/base.php';
 
