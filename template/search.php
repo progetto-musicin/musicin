@@ -20,7 +20,7 @@
                         <!-- <h5 class="card-title">Card title</h5> -->
                         <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
                         <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
-                        <h5 class ="card-title"><?php echo htmlspecialchars($user['username']); ?></h5>
+                        <h3 class ="card-title"><?php echo htmlspecialchars($user['username']); ?></h3>
                         <div class ="card-text">Numero di follower: <span class="badge text-bg-secondary"><?php echo $user['followers_count']; ?></span></div>
                         <div class ="card-text">Numero di seguiti: <span class="badge text-bg-secondary"><?php echo $user['followings_count']; ?></span></div>
                     </div>
