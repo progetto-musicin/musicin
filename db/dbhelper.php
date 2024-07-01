@@ -110,6 +110,9 @@ class DatabaseHelper {
     }
 
     public function followUser($follower_id, $followed_id) {
+        if($follower_id == $followed_id) {
+            return false;
+        }
     try {
         $query = "INSERT INTO follows (follower_id, followed_id) VALUES (:follower_id, :followed_id)";
         $stmt = $this->conn->prepare($query);
